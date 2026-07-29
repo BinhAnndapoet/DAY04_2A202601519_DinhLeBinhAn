@@ -281,5 +281,22 @@ class AppContractTests(unittest.TestCase):
         self.assertEqual(definitions, [])
 
 
+class RootEntrypointContractTests(unittest.TestCase):
+    def test_root_entrypoint_delegates_to_existing_workbench(self) -> None:
+        entrypoint = Path(__file__).resolve().parents[2] / "src" / "app.py"
+
+        self.assertTrue(entrypoint.is_file(), "src/app.py must exist")
+        source = entrypoint.read_text(encoding="utf-8")
+        tree = ast.parse(source)
+
+        self.assertIn("starter_v0", source)
+        self.assertIn("runpy.run_path", source)
+        self.assertFalse(any(
+            isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+            and node.name == "run_model_tool_loop"
+            for node in ast.walk(tree)
+        ))
+
+
 if __name__ == "__main__":
     unittest.main()
