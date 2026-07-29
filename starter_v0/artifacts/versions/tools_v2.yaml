@@ -19,22 +19,22 @@ tools:
       required: [question]
 
   - name: timeline
-    description: "Lấy bài đăng CỦA MỘT TÀI KHOẢN cụ thể. Chỉ dùng khi người dùng nêu đích danh chủ tài khoản (vd: 'tweet của @sama'). KHÔNG dùng khi người dùng tìm bài đăng VỀ một chủ đề — đó là social_search."
+    description: "Lấy các bài đăng gần đây."
     parameters:
       type: object
       properties:
-        screenname: {type: string, default: "", description: "Handle của tài khoản, không có @ (vd: sama). Không bao giờ điền tên sản phẩm/chủ đề vào đây."}
-        limit: {type: integer, default: 5, description: "Số bài đăng cần lấy. Lấy đúng con số người dùng nêu."}
+        screenname: {type: string, default: "", description: "Tên tài khoản"}
+        limit: {type: integer, default: 5, description: "Số lượng"}
       required: [screenname]
 
   - name: social_search
-    description: "Tìm bài đăng VỀ MỘT CHỦ ĐỀ/từ khóa trên mạng xã hội (vd: 'tweet về Claude', 'tweet về Gemini 3'). Đây là lựa chọn mặc định cho 'tìm tweet về X'; chỉ dùng timeline khi X là chủ tài khoản."
+    description: "Tìm trên mạng xã hội."
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Từ khóa/chủ đề cần tìm."}
-        search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "Latest = mới nhất/gần đây. Top = phổ biến nhất/nhiều tương tác nhất. Chọn theo đúng chữ người dùng dùng."}
-        limit: {type: integer, default: 5, description: "Số bài đăng cần lấy. Nếu người dùng nêu con số (kể cả ở turn trước), phải dùng đúng con số đó."}
+        query: {type: string, default: "", description: "Từ khóa"}
+        search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "Cách sắp xếp"}
+        limit: {type: integer, default: 5, description: "Số lượng"}
       required: [query]
 
   - name: lookup
@@ -42,10 +42,10 @@ tools:
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Truy vấn, giữ nguyên từ khóa của người dùng."}
-        topic: {type: string, enum: [general, news], default: "general", description: "news khi người dùng hỏi tin tức/thời sự; general cho kiến thức chung."}
-        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "'hôm nay/24h' -> day; 'tuần này' -> week; 'tháng này/30 ngày' -> month; 'năm nay' -> year."}
-        max_results: {type: integer, default: 5, description: "Số kết quả. Nếu người dùng nêu con số (vd '8 kết quả') phải dùng đúng con số đó."}
+        query: {type: string, default: "", description: "Truy vấn"}
+        topic: {type: string, enum: [general, news], default: "general", description: "Phân loại"}
+        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian"}
+        max_results: {type: integer, default: 5, description: "Số kết quả"}
       required: [query]
 
   - name: fetch
@@ -83,9 +83,9 @@ tools:
     parameters:
       type: object
       properties:
-        text: {type: string, default: "", description: "Nội dung sẽ được đăng (KHÔNG phải câu lệnh của người dùng)."}
-        confirmed: {type: boolean, default: false, description: "Đặt true CHỈ KHI người dùng đã xác nhận rõ ràng ở lượt gần nhất. Nếu người dùng đã duyệt/xác nhận thì bắt buộc truyền true, không hỏi lại."}
-      required: [text, confirmed]
+        text: {type: string, default: "", description: "Nội dung"}
+        confirmed: {type: boolean, default: false, description: "Cờ xác nhận"}
+      required: [text]
 
   - name: policy
     description: "Tra cứu QUY ĐỊNH NỘI BỘ của công ty (không phải web). Dùng khi câu hỏi nhắc tới 'quy định', 'chính sách', 'nội bộ', 'công ty'."
@@ -104,7 +104,7 @@ tools:
       properties:
         query: {type: string, default: "", description: "Từ khóa"}
         max_results: {type: integer, default: 5, description: "Số lượng"}
-        sort_by: {type: string, enum: [relevance, lastUpdatedDate, submittedDate], default: "relevance", description: "'bài NỘP mới nhất/mới công bố' -> submittedDate; 'bài CẬP NHẬT gần đây' -> lastUpdatedDate; mặc định relevance."}
+        sort_by: {type: string, enum: [relevance, lastUpdatedDate, submittedDate], default: "relevance", description: "Sắp xếp"}
       required: [query]
 
   - name: paper_text
