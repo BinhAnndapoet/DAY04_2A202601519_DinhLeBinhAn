@@ -9,3 +9,5 @@ PyYAML>=6.0
 streamlit>=1.30.0
 # Optional arXiv PDF extraction (`paper_text`):
 pypdf>=4.0.0
+# Technical workbench UI:
+streamlit>=1.30.0
