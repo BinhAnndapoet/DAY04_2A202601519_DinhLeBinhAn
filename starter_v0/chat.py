@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from agent import summarize_tool_results
 from env_loader import load_lab_env
 from providers import make_provider
 from providers.base import ToolCall
@@ -56,16 +57,20 @@ def execute_tool_call(call: ToolCall) -> dict[str, Any]:
     return {"tool": call.name, "args": call.args, "result": result}
 
 
-def tool_results_message(events: list[dict[str, Any]]) -> dict[str, str]:
-    return {
-        "role": "user",
-        "content": (
-            "TOOL_RESULTS_JSON:\n"
-            f"{json_text(events, max_chars=24000)}\n\n"
-            "Use only these tool results. If the user asked for a digest and the items are ready, "
-            "call the formatting tool. Otherwise answer the user directly with cited sources when available."
-        ),
-    }
+def tool_results_message(events: list[dict[str, Any]], notes: str | None = None) -> dict[str, str]:
+    content = (
+        "TOOL_RESULTS_JSON:\n"
+        f"{json_text(events, max_chars=24000)}\n\n"
+        "Use only these tool results. If the user asked for a digest and the items are ready, "
+        "call the formatting tool. Otherwise answer the user directly with cited sources when available."
+    )
+    if notes:
+        content += (
+            "\n\nRESEARCH_NOTES (auto-summarized from the results above):\n"
+            f"{notes}\n\n"
+            "Prefer these notes for reasoning; fall back to the raw results only if a needed detail is missing."
+        )
+    return {"role": "user", "content": content}
 
 
 def assistant_tool_message(response_text: str | None, calls: list[ToolCall]) -> dict[str, str]:
@@ -133,7 +138,10 @@ def run_model_tool_loop(
             non_clarification_events.append(event)
 
         rounds.append(round_record)
-        working_messages.append(tool_results_message(non_clarification_events))
+        # Content summarization step: compress this round's raw results into notes
+        # before feeding them back, so the agent reasons over many sources cleanly.
+        notes = summarize_tool_results(provider, model, non_clarification_events)
+        working_messages.append(tool_results_message(non_clarification_events, notes=notes))
 
     return {
         "status": "max_tool_rounds",
