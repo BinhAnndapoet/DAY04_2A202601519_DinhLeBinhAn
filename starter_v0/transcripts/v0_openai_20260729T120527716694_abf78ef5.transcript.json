@@ -1,0 +1,838 @@
+{
+  "transcript_id": "v0_openai_20260729T120527716694_abf78ef5",
+  "version": "v0",
+  "artifact_version": "v0+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openai",
+  "model": "gpt-4o",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T12:05:27",
+  "updated_at": "2026-07-29T12:09:15",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T12:05:27",
+      "user": "Đọc URL này và tóm tắt các luận điểm chính giúp tôi.",
+      "status": "answered",
+      "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T12:05:29"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T12:05:32",
+      "user": "https://arxiv.org/pdf/1706.03762,",
+      "status": "answered",
+      "assistant_text": "The paper \"Attention Is All You Need\" by Vaswani et al. introduces the Transformer model, which is based entirely on attention mechanisms, eliminating the need for recurrent or convolutional neural networks. Here are the key points:\n\n1. **Model Architecture**: The Transformer uses self-attention mechanisms to compute representations of input and output sequences, allowing for greater parallelization and efficiency in training compared to traditional RNN-based models.\n\n2. **Performance**: The model achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task and 41.8 on the English-to-French task, surpassing previous state-of-the-art models.\n\n3. **Training Efficiency**: The Transformer was trained for 3.5 days on eight GPUs, demonstrating significant efficiency in training time and resource usage.\n\n4. **Generalization**: The model generalizes well to other tasks, such as English constituency parsing, with both large and limited training data.\n\n5. **Contributors**: Key contributors to the development of the Transformer include Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin.\n\nThe Transformer model's reliance on self-attention allows it to efficiently model dependencies without regard to their distance in the input or output sequences, making it a powerful tool for sequence transduction tasks. You can read more about it in the full paper [here](https://arxiv.org/abs/1706.03762).",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/pdf/1706.03762"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/pdf/1706.03762"
+              },
+              "result": {
+                "tool": "get_arxiv_paper_text",
+                "arxiv_id": "1706.03762",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
+                "pdf_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.pdf",
+                "txt_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.txt",
+                "page_count": 15,
+                "pages_read": 5,
+                "chars_returned": 8000,
+                "items": [
+                  {
+                    "title": "arXiv paper 1706.03762",
+                    "url": "https://arxiv.org/abs/1706.03762",
+                    "source": "arxiv.org",
+                    "summary": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\nAttention Is All You Need\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\nNiki Parmar∗\nGoogle Research\nnikip@google.com\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\nLlion Jones∗\nGoogle Research\nllion@google.com\nAidan N. Gomez∗ †\nUniversity of Toronto\naidan@cs.toronto.edu\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗ ‡\nillia.polosukhin@gmail.com\nAbstract\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\n1 Introduction\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [ 35, 2, 5]. Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [38, 24, 15].\nRecurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.\nAttention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [ 12]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\n3 Model Architecture\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].\nHere, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence\nof continuous representations z = (z1, ..., zn). Given z, the decoder then generates an output\nsequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive\n[10], consuming the previously generated symbols as additional input when generating the next.\n2\n\nFigure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "The paper \"Attention Is All You Need\" by Vaswani et al. introduces the Transformer model, which is based entirely on attention mechanisms, eliminating the need for recurrent or convolutional neural networks. Here are the key points:\n\n1. **Model Architecture**: The Transformer uses self-attention mechanisms to compute representations of input and output sequences, allowing for greater parallelization and efficiency in training compared to traditional RNN-based models.\n\n2. **Performance**: The model achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task and 41.8 on the English-to-French task, surpassing previous state-of-the-art models.\n\n3. **Training Efficiency**: The Transformer was trained for 3.5 days on eight GPUs, demonstrating significant efficiency in training time and resource usage.\n\n4. **Generalization**: The model generalizes well to other tasks, such as English constituency parsing, with both large and limited training data.\n\n5. **Contributors**: Key contributors to the development of the Transformer include Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin.\n\nThe Transformer model's reliance on self-attention allows it to efficiently model dependencies without regard to their distance in the input or output sequences, making it a powerful tool for sequence transduction tasks. You can read more about it in the full paper [here](https://arxiv.org/abs/1706.03762).",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "paper_text",
+          "args": {
+            "arxiv_url": "https://arxiv.org/pdf/1706.03762"
+          },
+          "result": {
+            "tool": "get_arxiv_paper_text",
+            "arxiv_id": "1706.03762",
+            "url": "https://arxiv.org/abs/1706.03762",
+            "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
+            "pdf_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.pdf",
+            "txt_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.txt",
+            "page_count": 15,
+            "pages_read": 5,
+            "chars_returned": 8000,
+            "items": [
+              {
+                "title": "arXiv paper 1706.03762",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "source": "arxiv.org",
+                "summary": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\nAttention Is All You Need\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\nNiki Parmar∗\nGoogle Research\nnikip@google.com\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\nLlion Jones∗\nGoogle Research\nllion@google.com\nAidan N. Gomez∗ †\nUniversity of Toronto\naidan@cs.toronto.edu\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗ ‡\nillia.polosukhin@gmail.com\nAbstract\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\n1 Introduction\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [ 35, 2, 5]. Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [38, 24, 15].\nRecurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.\nAttention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [ 12]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\n3 Model Architecture\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].\nHere, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence\nof continuous representations z = (z1, ..., zn). Given z, the decoder then generates an output\nsequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive\n[10], consuming the previously generated symbols as additional input when generating the next.\n2\n\nFigure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:05:43"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-07-29T12:07:03",
+      "user": "so sánh với paper Attention is all you need",
+      "status": "answered",
+      "assistant_text": "The paper \"Attention Is All You Need\" by Vaswani et al. introduces the Transformer model, which is based entirely on attention mechanisms, eliminating the need for recurrent or convolutional neural networks. Here are the key points:\n\n1. **Model Architecture**: The Transformer uses self-attention mechanisms to compute representations of input and output sequences, allowing for greater parallelization and efficiency in training compared to traditional RNN-based models.\n\n2. **Performance**: The model achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task and 41.8 on the English-to-French task, surpassing previous state-of-the-art models.\n\n3. **Training Efficiency**: The Transformer was trained for 3.5 days on eight GPUs, demonstrating significant efficiency in training time and resource usage.\n\n4. **Generalization**: The model generalizes well to other tasks, such as English constituency parsing, with both large and limited training data.\n\n5. **Contributors**: Key contributors to the development of the Transformer include Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin.\n\nThe Transformer model's reliance on self-attention allows it to efficiently model dependencies without regard to their distance in the input or output sequences, making it a powerful tool for sequence transduction tasks. You can read more about it in the full paper [here](https://arxiv.org/abs/1706.03762).",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/pdf/1706.03762",
+                "max_chars": 8000
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/pdf/1706.03762",
+                "max_chars": 8000
+              },
+              "result": {
+                "tool": "get_arxiv_paper_text",
+                "arxiv_id": "1706.03762",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
+                "pdf_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.pdf",
+                "txt_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.txt",
+                "page_count": 15,
+                "pages_read": 5,
+                "chars_returned": 8000,
+                "items": [
+                  {
+                    "title": "arXiv paper 1706.03762",
+                    "url": "https://arxiv.org/abs/1706.03762",
+                    "source": "arxiv.org",
+                    "summary": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\nAttention Is All You Need\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\nNiki Parmar∗\nGoogle Research\nnikip@google.com\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\nLlion Jones∗\nGoogle Research\nllion@google.com\nAidan N. Gomez∗ †\nUniversity of Toronto\naidan@cs.toronto.edu\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗ ‡\nillia.polosukhin@gmail.com\nAbstract\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\n1 Introduction\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [ 35, 2, 5]. Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [38, 24, 15].\nRecurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.\nAttention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [ 12]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\n3 Model Architecture\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].\nHere, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence\nof continuous representations z = (z1, ..., zn). Given z, the decoder then generates an output\nsequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive\n[10], consuming the previously generated symbols as additional input when generating the next.\n2\n\nFigure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "The paper \"Attention Is All You Need\" by Vaswani et al. introduces the Transformer model, which is based entirely on attention mechanisms, eliminating the need for recurrent or convolutional neural networks. Here are the key points:\n\n1. **Model Architecture**: The Transformer uses self-attention mechanisms to compute representations of input and output sequences, allowing for greater parallelization and efficiency in training compared to traditional RNN-based models.\n\n2. **Performance**: The model achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task and 41.8 on the English-to-French task, surpassing previous state-of-the-art models.\n\n3. **Training Efficiency**: The Transformer was trained for 3.5 days on eight GPUs, demonstrating significant efficiency in training time and resource usage.\n\n4. **Generalization**: The model generalizes well to other tasks, such as English constituency parsing, with both large and limited training data.\n\n5. **Contributors**: Key contributors to the development of the Transformer include Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin.\n\nThe Transformer model's reliance on self-attention allows it to efficiently model dependencies without regard to their distance in the input or output sequences, making it a powerful tool for sequence transduction tasks. You can read more about it in the full paper [here](https://arxiv.org/abs/1706.03762).",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "paper_text",
+          "args": {
+            "arxiv_url": "https://arxiv.org/pdf/1706.03762",
+            "max_chars": 8000
+          },
+          "result": {
+            "tool": "get_arxiv_paper_text",
+            "arxiv_id": "1706.03762",
+            "url": "https://arxiv.org/abs/1706.03762",
+            "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
+            "pdf_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.pdf",
+            "txt_path": "D:\\VinAI\\K3\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\arxiv_papers\\1706.03762.txt",
+            "page_count": 15,
+            "pages_read": 5,
+            "chars_returned": 8000,
+            "items": [
+              {
+                "title": "arXiv paper 1706.03762",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "source": "arxiv.org",
+                "summary": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\nAttention Is All You Need\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\nNiki Parmar∗\nGoogle Research\nnikip@google.com\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\nLlion Jones∗\nGoogle Research\nllion@google.com\nAidan N. Gomez∗ †\nUniversity of Toronto\naidan@cs.toronto.edu\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗ ‡\nillia.polosukhin@gmail.com\nAbstract\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\n1 Introduction\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [ 35, 2, 5]. Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [38, 24, 15].\nRecurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.\nAttention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [ 12]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\n3 Model Architecture\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].\nHere, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence\nof continuous representations z = (z1, ..., zn). Given z, the decoder then generates an output\nsequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive\n[10], consuming the previously generated symbols as additional input when generating the next.\n2\n\nFigure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:07:18"
+    },
+    {
+      "turn_index": 4,
+      "started_at": "2026-07-29T12:07:43",
+      "user": "thời tiết hôm nay thế nào",
+      "status": "answered",
+      "assistant_text": "Tôi không thể cung cấp thông tin thời tiết hiện tại. Bạn có thể kiểm tra các trang web hoặc ứng dụng dự báo thời tiết để biết thông tin chi tiết về thời tiết hôm nay.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Tôi không thể cung cấp thông tin thời tiết hiện tại. Bạn có thể kiểm tra các trang web hoặc ứng dụng dự báo thời tiết để biết thông tin chi tiết về thời tiết hôm nay.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T12:07:44"
+    },
+    {
+      "turn_index": 5,
+      "started_at": "2026-07-29T12:08:13",
+      "user": "tìm paper gốc của bài toán Chấp nhận tách",
+      "status": "answered",
+      "assistant_text": "I couldn't find a specific paper titled \"Chấp nhận tách\" or directly related to the \"Chấp nhận tách problem\" in the search results. The results returned are related to various scientific studies involving chemical compounds and quantum mechanics, but none seem to directly address the \"Chấp nhận tách\" problem.\n\nIf you have more specific details or another name for the problem, please let me know, and I can try searching again.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "Chấp nhận tách problem",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "Chấp nhận tách problem",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "Chấp nhận tách problem",
+                "api_query": "all:Ch AND all:nh AND all:ch AND all:problem",
+                "total_results": 7,
+                "items": [
+                  {
+                    "arxiv_id": "1708.06871v1",
+                    "title": "Detection of New Methylamine (CH$_3$NH$_2$) Sources: Candidates for Future Glycine Surveys",
+                    "summary": "It has been a long-standing problem to detect interstellar glycine (NH$_2$CH$_2$COOH), the simplest amino acid, in studying a possible relation between the Universe and origin of life. In the last about 40 years all surveys of glycine failed, and it would be an alternative strategy to search for precursor(s) to glycine. Such studies of precursors would be crucial prior to conducting sensitive surveys by ALMA. Laboratory studies have suggested that CH$_3$NH$_2$ is a possible precursor to glycine. Further theoretical study also suggested that the CH$_2$NH$_2$ radical that can be formed from CH$_3$NH$_2$ through photodissociation can be a good precursor to glycine. Thus we observed CH$_3$NH$_2$ towards several hot core sources by using the Nobeyama 45m radio telescope, and succeeded in finding a new CH$_3$NH$_2$ source, G10.47+0.03, with its fractional abundance of 2.4+-0.6x10^{-8}; at the time of writing, this source is the most abundant source of CH$_3$NH$_2$ ever known. We also found another new source of CH$_3$NH$_2$, NGC6334F, however, the detection may be tentative since the signal-to-noise ratios are not sufficient to claim secure detection. Detailed analysis of the detected data revealed the detection of the hyperfine components of CH$_3$NH$_2$ for the first time. We found that the observed abundance of CH$_3$NH$_2$ agrees fairly well with the theoretically predicted value by Garrod (2013). Detectability of interstellar glycine is discussed.",
+                    "authors": [
+                      "Masatoshi Ohishi",
+                      "Taiki Suzuki",
+                      "Tomoya Hirota",
+                      "Masao Saito",
+                      "Norio Kaifu"
+                    ],
+                    "published": "2017-08-23T02:36:31Z",
+                    "updated": "2017-08-23T02:36:31Z",
+                    "url": "http://arxiv.org/abs/1708.06871v1",
+                    "pdf_url": "https://arxiv.org/pdf/1708.06871v1",
+                    "source": "arxiv.org",
+                    "primary_category": "astro-ph.GA",
+                    "categories": [
+                      "astro-ph.GA"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1709.00344v1",
+                    "title": "Time resolved photoemission spectroscopy of electronic cooling and localization in CH$_3$NH$_3$PbI$_3$ crystals",
+                    "summary": "We measure the surface of CH$_3$NH$_3$PbI$_3$ single crystals by making use of two photon photoemission spectroscopy. Our method monitors the electronic distribution of photoexcited electrons, explicitly discriminating the initial thermalization from slower dynamical processes. The reported results disclose the fast dissipation channels of hot carriers (0.25 ps), set a upper bound to the surface induced recombination velocity ($<4000$ cm/s) and reveal the dramatic effect of shallow traps on the electrons dynamics. The picosecond localization of excited electrons in degraded CH$_3$NH$_3$PbI$_3$ samples is consistent with the progressive reduction of photoconversion efficiency in operating devices. Minimizing the density of shallow traps and solving the aging problem may boost the macroscopic efficiency of solar cells to the theoretical limit.",
+                    "authors": [
+                      "Zhesheng Chen",
+                      "Min-i Lee",
+                      "Zailan Zhang",
+                      "Hiba Diab",
+                      "Damien Garrot",
+                      "Ferdinand Lédée",
+                      "Pierre Fertey",
+                      "Evangelos Papalazarou",
+                      "Marino Marsi",
+                      "Carlito Ponseca",
+                      "Emmanuelle Deleporte",
+                      "Antonio Tejeda",
+                      "Luca Perfetti"
+                    ],
+                    "published": "2017-09-01T14:36:13Z",
+                    "updated": "2017-09-01T14:36:13Z",
+                    "url": "http://arxiv.org/abs/1709.00344v1",
+                    "pdf_url": "https://arxiv.org/pdf/1709.00344v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cond-mat.mtrl-sci",
+                    "categories": [
+                      "cond-mat.mtrl-sci"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1311.2680v1",
+                    "title": "Growth of (CH$_3$)$_2$NH$_2$CuCl$_3$ single crystals using evaporation method with different temperatures and solvents",
+                    "summary": "The bulk single crystals of of low-dimensional magnet (CH$_3$)$_2$NH$_2$CuCl$_3$ (DMACuCl$_3$ or MCCL) are grown by a slow evaporation method with different kinds of solvents, different degrees of super-saturation of solution and different temperatures of solution, respectively. Among three kinds of solvent, methanol, alcohol and water, alcohol is found to be the best one for growing MCCL crystals because of its structural similarity to the raw materials and suitable evaporation rate. The best growth temperature is in the vicinity of 35 $^{\\circ}$C. The problem of the crystals deliquescing in air has been solved through recrystallization process. The crystals are characterized by means of x-ray diffraction, specific heat and magnetic susceptibility.",
+                    "authors": [
+                      "L. M. Chen",
+                      "W. Tao",
+                      "Z. Y. Zhao",
+                      "Q. J. Li",
+                      "W. P. Ke",
+                      "X. M. Wang",
+                      "X. G. Liu",
+                      "C. Fan",
+                      "X. F. Sun"
+                    ],
+                    "published": "2013-11-12T05:54:54Z",
+                    "updated": "2013-11-12T05:54:54Z",
+                    "url": "http://arxiv.org/abs/1311.2680v1",
+                    "pdf_url": "https://arxiv.org/pdf/1311.2680v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cond-mat.str-el",
+                    "categories": [
+                      "cond-mat.str-el",
+                      "cond-mat.mtrl-sci"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2203.09443v3",
+                    "title": "Spin-Electric Coupling in Lead Halide Perovskites",
+                    "summary": "Lead-halide perovskites enjoy a number of remarkable optoelectronic properties. To explain their origin, it is necessary to study how electromagnetic fields interact with these systems. We address this problem here by studying two classical quantities: Faraday rotation and the complex refractive index in a paradigmatic perovskite CH$_3$NH$_3$PbBr$_3$ in a broad wavelength range. We find that the minimal coupling of electromagnetic fields to the k$\\cdot$p Hamiltonian is insufficient to describe the observed data even on the qualitative level. To amend this, we demonstrate that there exists a relevant atomic-level coupling between electromagnetic fields and the spin degree of freedom. This spin-electric coupling allows for quantitative description of a number of previous as well as present experimental data. In particular, we use it here to show that the Faraday effect in lead-halide perovskites is dominated by the Zeeman splitting of the energy levels, and has a substantial beyond-Becquerel contribution. Finally, we present general symmetry-based phenomenological arguments that in the low-energy limit our effective model includes all basis coupling terms to the electromagnetic field in the linear order.",
+                    "authors": [
+                      "Artem G. Volosniev",
+                      "Abhishek Shiva Kumar",
+                      "Dusan Lorenc",
+                      "Younes Ashourishokri",
+                      "Ayan A. Zhumekenov",
+                      "Osman M. Bakr",
+                      "Mikhail Lemeshko",
+                      "Zhanybek Alpichshev"
+                    ],
+                    "published": "2022-03-17T17:03:07Z",
+                    "updated": "2023-03-10T16:48:16Z",
+                    "url": "http://arxiv.org/abs/2203.09443v3",
+                    "pdf_url": "https://arxiv.org/pdf/2203.09443v3",
+                    "source": "arxiv.org",
+                    "primary_category": "cond-mat.other",
+                    "categories": [
+                      "cond-mat.other",
+                      "cond-mat.mes-hall",
+                      "cond-mat.mtrl-sci"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2109.04576v2",
+                    "title": "Analytical nonadiabatic couplings and gradients within the state-averaged orbital-optimized variational quantum eigensolver",
+                    "summary": "In this work, we introduce several technical and analytical extensions to our recent state-averaged orbital-optimized variational quantum eigensolver (SA-OO-VQE) algorithm (see Ref. [S. Yalouz et al. ,Quantum Sci. Technol. 6, 024004 (2021).]). Motivated by the limitations of current quantum computers, the first extension consists in an efficient state-resolution procedure to find the SA-OO-VQE eigenstates, and not just the subspace spanned by them, while remaining in the equi-ensemble framework. This approach avoids expensive intermediate resolutions of the eigenstates by postponing this problem to the very end of the full algorithm. The second extension allows for the estimation of analytical gradients and non-adiabatic couplings, which are crucial in many practical situations ranging from the search of conical intersections to the simulation of quantum dynamics, in, for example, photoisomerization reactions. The accuracy of our new implementations is demonstrated on the formaldimine molecule CH$_2$NH (a minimal Schiff base model relevant for the study of photoisomerization in larger bio-molecules), for which we also perform a geometry optimization to locate a conical intersection between the ground and first-excited electronic states of the molecule.",
+                    "authors": [
+                      "Saad Yalouz",
+                      "Emiel Koridon",
+                      "Bruno Senjean",
+                      "Benjamin Lasorne",
+                      "Francesco Buda",
+                      "Lucas Visscher"
+                    ],
+                    "published": "2021-09-09T22:38:56Z",
+                    "updated": "2022-01-06T14:40:32Z",
+                    "url": "http://arxiv.org/abs/2109.04576v2",
+                    "pdf_url": "https://arxiv.org/pdf/2109.04576v2",
+                    "source": "arxiv.org",
+                    "primary_category": "quant-ph",
+                    "categories": [
+                      "quant-ph"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "I couldn't find a specific paper titled \"Chấp nhận tách\" or directly related to the \"Chấp nhận tách problem\" in the search results. The results returned are related to various scientific studies involving chemical compounds and quantum mechanics, but none seem to directly address the \"Chấp nhận tách\" problem.\n\nIf you have more specific details or another name for the problem, please let me know, and I can try searching again.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "Chấp nhận tách problem",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "Chấp nhận tách problem",
+            "api_query": "all:Ch AND all:nh AND all:ch AND all:problem",
+            "total_results": 7,
+            "items": [
+              {
+                "arxiv_id": "1708.06871v1",
+                "title": "Detection of New Methylamine (CH$_3$NH$_2$) Sources: Candidates for Future Glycine Surveys",
+                "summary": "It has been a long-standing problem to detect interstellar glycine (NH$_2$CH$_2$COOH), the simplest amino acid, in studying a possible relation between the Universe and origin of life. In the last about 40 years all surveys of glycine failed, and it would be an alternative strategy to search for precursor(s) to glycine. Such studies of precursors would be crucial prior to conducting sensitive surveys by ALMA. Laboratory studies have suggested that CH$_3$NH$_2$ is a possible precursor to glycine. Further theoretical study also suggested that the CH$_2$NH$_2$ radical that can be formed from CH$_3$NH$_2$ through photodissociation can be a good precursor to glycine. Thus we observed CH$_3$NH$_2$ towards several hot core sources by using the Nobeyama 45m radio telescope, and succeeded in finding a new CH$_3$NH$_2$ source, G10.47+0.03, with its fractional abundance of 2.4+-0.6x10^{-8}; at the time of writing, this source is the most abundant source of CH$_3$NH$_2$ ever known. We also found another new source of CH$_3$NH$_2$, NGC6334F, however, the detection may be tentative since the signal-to-noise ratios are not sufficient to claim secure detection. Detailed analysis of the detected data revealed the detection of the hyperfine components of CH$_3$NH$_2$ for the first time. We found that the observed abundance of CH$_3$NH$_2$ agrees fairly well with the theoretically predicted value by Garrod (2013). Detectability of interstellar glycine is discussed.",
+                "authors": [
+                  "Masatoshi Ohishi",
+                  "Taiki Suzuki",
+                  "Tomoya Hirota",
+                  "Masao Saito",
+                  "Norio Kaifu"
+                ],
+                "published": "2017-08-23T02:36:31Z",
+                "updated": "2017-08-23T02:36:31Z",
+                "url": "http://arxiv.org/abs/1708.06871v1",
+                "pdf_url": "https://arxiv.org/pdf/1708.06871v1",
+                "source": "arxiv.org",
+                "primary_category": "astro-ph.GA",
+                "categories": [
+                  "astro-ph.GA"
+                ]
+              },
+              {
+                "arxiv_id": "1709.00344v1",
+                "title": "Time resolved photoemission spectroscopy of electronic cooling and localization in CH$_3$NH$_3$PbI$_3$ crystals",
+                "summary": "We measure the surface of CH$_3$NH$_3$PbI$_3$ single crystals by making use of two photon photoemission spectroscopy. Our method monitors the electronic distribution of photoexcited electrons, explicitly discriminating the initial thermalization from slower dynamical processes. The reported results disclose the fast dissipation channels of hot carriers (0.25 ps), set a upper bound to the surface induced recombination velocity ($<4000$ cm/s) and reveal the dramatic effect of shallow traps on the electrons dynamics. The picosecond localization of excited electrons in degraded CH$_3$NH$_3$PbI$_3$ samples is consistent with the progressive reduction of photoconversion efficiency in operating devices. Minimizing the density of shallow traps and solving the aging problem may boost the macroscopic efficiency of solar cells to the theoretical limit.",
+                "authors": [
+                  "Zhesheng Chen",
+                  "Min-i Lee",
+                  "Zailan Zhang",
+                  "Hiba Diab",
+                  "Damien Garrot",
+                  "Ferdinand Lédée",
+                  "Pierre Fertey",
+                  "Evangelos Papalazarou",
+                  "Marino Marsi",
+                  "Carlito Ponseca",
+                  "Emmanuelle Deleporte",
+                  "Antonio Tejeda",
+                  "Luca Perfetti"
+                ],
+                "published": "2017-09-01T14:36:13Z",
+                "updated": "2017-09-01T14:36:13Z",
+                "url": "http://arxiv.org/abs/1709.00344v1",
+                "pdf_url": "https://arxiv.org/pdf/1709.00344v1",
+                "source": "arxiv.org",
+                "primary_category": "cond-mat.mtrl-sci",
+                "categories": [
+                  "cond-mat.mtrl-sci"
+                ]
+              },
+              {
+                "arxiv_id": "1311.2680v1",
+                "title": "Growth of (CH$_3$)$_2$NH$_2$CuCl$_3$ single crystals using evaporation method with different temperatures and solvents",
+                "summary": "The bulk single crystals of of low-dimensional magnet (CH$_3$)$_2$NH$_2$CuCl$_3$ (DMACuCl$_3$ or MCCL) are grown by a slow evaporation method with different kinds of solvents, different degrees of super-saturation of solution and different temperatures of solution, respectively. Among three kinds of solvent, methanol, alcohol and water, alcohol is found to be the best one for growing MCCL crystals because of its structural similarity to the raw materials and suitable evaporation rate. The best growth temperature is in the vicinity of 35 $^{\\circ}$C. The problem of the crystals deliquescing in air has been solved through recrystallization process. The crystals are characterized by means of x-ray diffraction, specific heat and magnetic susceptibility.",
+                "authors": [
+                  "L. M. Chen",
+                  "W. Tao",
+                  "Z. Y. Zhao",
+                  "Q. J. Li",
+                  "W. P. Ke",
+                  "X. M. Wang",
+                  "X. G. Liu",
+                  "C. Fan",
+                  "X. F. Sun"
+                ],
+                "published": "2013-11-12T05:54:54Z",
+                "updated": "2013-11-12T05:54:54Z",
+                "url": "http://arxiv.org/abs/1311.2680v1",
+                "pdf_url": "https://arxiv.org/pdf/1311.2680v1",
+                "source": "arxiv.org",
+                "primary_category": "cond-mat.str-el",
+                "categories": [
+                  "cond-mat.str-el",
+                  "cond-mat.mtrl-sci"
+                ]
+              },
+              {
+                "arxiv_id": "2203.09443v3",
+                "title": "Spin-Electric Coupling in Lead Halide Perovskites",
+                "summary": "Lead-halide perovskites enjoy a number of remarkable optoelectronic properties. To explain their origin, it is necessary to study how electromagnetic fields interact with these systems. We address this problem here by studying two classical quantities: Faraday rotation and the complex refractive index in a paradigmatic perovskite CH$_3$NH$_3$PbBr$_3$ in a broad wavelength range. We find that the minimal coupling of electromagnetic fields to the k$\\cdot$p Hamiltonian is insufficient to describe the observed data even on the qualitative level. To amend this, we demonstrate that there exists a relevant atomic-level coupling between electromagnetic fields and the spin degree of freedom. This spin-electric coupling allows for quantitative description of a number of previous as well as present experimental data. In particular, we use it here to show that the Faraday effect in lead-halide perovskites is dominated by the Zeeman splitting of the energy levels, and has a substantial beyond-Becquerel contribution. Finally, we present general symmetry-based phenomenological arguments that in the low-energy limit our effective model includes all basis coupling terms to the electromagnetic field in the linear order.",
+                "authors": [
+                  "Artem G. Volosniev",
+                  "Abhishek Shiva Kumar",
+                  "Dusan Lorenc",
+                  "Younes Ashourishokri",
+                  "Ayan A. Zhumekenov",
+                  "Osman M. Bakr",
+                  "Mikhail Lemeshko",
+                  "Zhanybek Alpichshev"
+                ],
+                "published": "2022-03-17T17:03:07Z",
+                "updated": "2023-03-10T16:48:16Z",
+                "url": "http://arxiv.org/abs/2203.09443v3",
+                "pdf_url": "https://arxiv.org/pdf/2203.09443v3",
+                "source": "arxiv.org",
+                "primary_category": "cond-mat.other",
+                "categories": [
+                  "cond-mat.other",
+                  "cond-mat.mes-hall",
+                  "cond-mat.mtrl-sci"
+                ]
+              },
+              {
+                "arxiv_id": "2109.04576v2",
+                "title": "Analytical nonadiabatic couplings and gradients within the state-averaged orbital-optimized variational quantum eigensolver",
+                "summary": "In this work, we introduce several technical and analytical extensions to our recent state-averaged orbital-optimized variational quantum eigensolver (SA-OO-VQE) algorithm (see Ref. [S. Yalouz et al. ,Quantum Sci. Technol. 6, 024004 (2021).]). Motivated by the limitations of current quantum computers, the first extension consists in an efficient state-resolution procedure to find the SA-OO-VQE eigenstates, and not just the subspace spanned by them, while remaining in the equi-ensemble framework. This approach avoids expensive intermediate resolutions of the eigenstates by postponing this problem to the very end of the full algorithm. The second extension allows for the estimation of analytical gradients and non-adiabatic couplings, which are crucial in many practical situations ranging from the search of conical intersections to the simulation of quantum dynamics, in, for example, photoisomerization reactions. The accuracy of our new implementations is demonstrated on the formaldimine molecule CH$_2$NH (a minimal Schiff base model relevant for the study of photoisomerization in larger bio-molecules), for which we also perform a geometry optimization to locate a conical intersection between the ground and first-excited electronic states of the molecule.",
+                "authors": [
+                  "Saad Yalouz",
+                  "Emiel Koridon",
+                  "Bruno Senjean",
+                  "Benjamin Lasorne",
+                  "Francesco Buda",
+                  "Lucas Visscher"
+                ],
+                "published": "2021-09-09T22:38:56Z",
+                "updated": "2022-01-06T14:40:32Z",
+                "url": "http://arxiv.org/abs/2109.04576v2",
+                "pdf_url": "https://arxiv.org/pdf/2109.04576v2",
+                "source": "arxiv.org",
+                "primary_category": "quant-ph",
+                "categories": [
+                  "quant-ph"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:08:21"
+    },
+    {
+      "turn_index": 6,
+      "started_at": "2026-07-29T12:09:07",
+      "user": "tìm paper gốc của bài toán Chấp nhận tách, đây là bài toán toán học",
+      "status": "answered",
+      "assistant_text": "I couldn't find a specific paper directly related to the mathematical problem \"Chấp nhận tách.\" The search results returned papers related to chemical compounds and quantum mechanics, but none seem to address the mathematical problem you mentioned.\n\nIf you have more specific details or another name for the problem, please let me know, and I can try searching again.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "Chấp nhận tách",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "Chấp nhận tách",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "Chấp nhận tách",
+                "api_query": "all:Ch AND all:nh AND all:ch",
+                "total_results": 454,
+                "items": [
+                  {
+                    "arxiv_id": "2405.09094v1",
+                    "title": "Magnetic interactions based on proton orbital motion in CH$_3$NH$_3$PbI$_3$ and CH$_3$NH$_3$PbBr$_3$",
+                    "summary": "The microscopic origin of the remarkable optoelectronic properties of one of the most studied contemporary materials remains unclear. Here, we identify the existence of magnetic interactions between intermolecular proton orbitals in CH$_3$NH$_3$PbI$_3$ and CH$_3$NH$_3$PbBr$_3$. In particular, a unique sharp drop and a pronounced step-up discontinuity in the magnetic susceptibility at the tetragonal-to-cubic phase transitions are identified in CH$_3$NH$_3$PbI$_3$ and CH$_3$NH$_3$PbBr$_3$, respectively. The magnetic interactions in the orthorhombic and tetragonal phases are dependent on thermal history and lattice orientation while nearly independent of the applied external magnetic field. In CH$_3$NH$_3$PbBr$_3$, the CH$_3$ and NH$_3$$^+$ components reorient in an uncorrelated fashion resulting the cubic phase to also exhibit magnetic anisotropy. Our findings provide a potential link connecting the highly light-absorbing CH$_3$NH$_3$$^+$ and the exceptional properties of the charge carriers of the inorganic framework in hybrid perovskite solar cells.",
+                    "authors": [
+                      "Lei Meng",
+                      "Miao Miao Zhao",
+                      "Yi Yang Xu",
+                      "Chu Xin Peng",
+                      "Yang Yang",
+                      "Tian Tian Xing",
+                      "Peng Ren",
+                      "Fei Yen"
+                    ],
+                    "published": "2024-05-15T05:12:07Z",
+                    "updated": "2024-05-15T05:12:07Z",
+                    "url": "http://arxiv.org/abs/2405.09094v1",
+                    "pdf_url": "https://arxiv.org/pdf/2405.09094v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cond-mat.mtrl-sci",
+                    "categories": [
+                      "cond-mat.mtrl-sci"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1909.00528v1",
+                    "title": "Survey Observation of CH$_3$NH$_2$ and Its Formation Process",
+                    "summary": "We present the observational result of a glycine precursor, methylamine (CH$_3$NH$_2$), together with methanol (CH$_3$OH) and methanimine (CH$_2$NH) towards high-mass star-forming regions, NGC6334I, G10.47+0.03, G31.41+0.3, and W51~e1/e2 using ALMA. The molecular abundances toward these sources were derived using the rotational diagram method and compared with our state-of-the-art chemical model. We found that the observed ratio of \"CH$_3$NH$_2$/CH$_3$OH\" is in between 0.11 and 2.2. We also found that the observed \"CH$_3$NH$_2$/CH$_3$OH\" ratio agrees well with our chemical model by considering the formation of CH$_3$NH$_2$ on the grain surface via hydrogenation process to HCN. This result clearly shows the importance of hydrogenation processes to form CH$_3$NH$_2$. NGC63343I MM3, where CH$_3$NH$_2$ was not detected in this study and showed \"CH$_3$NH$_2$/CH$_3$OH\" ratio of less than 0.02, is clearly distinguished from the other cores.",
+                    "authors": [
+                      "Taiki Suzuki",
+                      "Liton Majumdar",
+                      "Kazuki Tokuda",
+                      "Harumi Minamoto",
+                      "Masatoshi Ohishi",
+                      "Masao Saito",
+                      "Tomoya Hirota",
+                      "Hideko Nomura",
+                      "Yoko Oya"
+                    ],
+                    "published": "2019-09-02T03:40:28Z",
+                    "updated": "2019-09-02T03:40:28Z",
+                    "url": "http://arxiv.org/abs/1909.00528v1",
+                    "pdf_url": "https://arxiv.org/pdf/1909.00528v1",
+                    "source": "arxiv.org",
+                    "primary_category": "astro-ph.SR",
+                    "categories": [
+                      "astro-ph.SR",
+                      "astro-ph.GA"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1605.02161v1",
+                    "title": "Survey Observations of a Possible Glycine Precursor, Methanimine (CH$_2$NH)",
+                    "summary": "We conducted survey observations of a glycine precursor, methanimine or methylenimine (CH$_2$NH), with the NRO 45 m telescope and the SMT telescope towards 12 high-mass and two low-mass star-forming regions in order to increase number of CH$_2$NH sources and to better understand the characteristics of CH2NH sources. As a result of our survey, CH$_2$NH was detected in eight sources, including four new sources. The estimated fractional abundances were ~10$^8$ in Orion KL and G10.47+0.03, while they were ~10$^9$ towards the other sources. Our hydrogen recombination line and past studies suggest that CH$_2$NH-rich sources have less evolved HII regions. The less destruction rates by UV flux from the central star would be contributed to the high CH$_2$NH abundances towards CH$_2$NH-rich sources. Our gas-grain chemical simulations suggest that CH$_2$NH is mostly formed in the gas-phase by neutral-neutral reactions rather than the product of thermal evaporation from the dust surfaces.",
+                    "authors": [
+                      "Taiki Suzuki",
+                      "Masatoshi Ohishi",
+                      "Tomoya Hirota",
+                      "Masao Saito",
+                      "Liton Majumdar",
+                      "Valentine Wakelam"
+                    ],
+                    "published": "2016-05-07T09:15:11Z",
+                    "updated": "2016-05-07T09:15:11Z",
+                    "url": "http://arxiv.org/abs/1605.02161v1",
+                    "pdf_url": "https://arxiv.org/pdf/1605.02161v1",
+                    "source": "arxiv.org",
+                    "primary_category": "astro-ph.GA",
+                    "categories": [
+                      "astro-ph.GA",
+                      "astro-ph.SR"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2405.09759v1",
+                    "title": "Ferroelectricity Driven by Orbital Resonance of Protons in CH$_3$NH$_3$Cl and CH$_3$NH$_3$Br",
+                    "summary": "The $β$ and $γ$ phases of methylammonium chloride CH$_3$NH$_3$Cl and methylammonium bromide CH$_3$NH$_3$Br are identified to be ferroelectric $via$ pyroelectric current and dielectric constant measurements. The magnetic susceptibility also exhibits pronounced discontinuities at the Curie temperatures. We attribute the origin of spontaneous polarization to the emergence of two groups of proton orbital magnetic moments from the uncorrelated motion of the CH$_3$ and NH$_3$ groups in the $β$ and $γ$ phases. The two inequivalent frameworks of intermolecular orbital resonances interact with each other to distort the lattice in a non-centrosymmetric fashion. Our findings indicate that the structural instabilities in molecular frameworks are magnetic in origin as well as provide a new pathway toward uncovering new organic ferroelectrics.",
+                    "authors": [
+                      "Chu Xin Peng",
+                      "Lei Meng",
+                      "Yi Yang Xu",
+                      "Tian Tian Xing",
+                      "Miao Miao Zhao",
+                      "Peng Ren",
+                      "Fei Yen"
+                    ],
+                    "published": "2024-05-16T02:06:02Z",
+                    "updated": "2024-05-16T02:06:02Z",
+                    "url": "http://arxiv.org/abs/2405.09759v1",
+                    "pdf_url": "https://arxiv.org/pdf/2405.09759v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cond-mat.mtrl-sci",
+                    "categories": [
+                      "cond-mat.mtrl-sci",
+                      "physics.chem-ph"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1604.05840v1",
+                    "title": "Photodiode Response in a CH$_3$NH$_3$PbI$_3$/CH$_3$NH$_3$SnI$_3$ Heterojunction",
+                    "summary": "Since the discovery of its photovoltaic properties organometallic salt CH$_3$NH$_3$PbI$_3$ became the subject of vivid interest. The material exhibits high light conversion efficiency, it lases in red color, and it can serve as the basis for light emitting diodes and photodetectors. Here we report another surprising feature of this material family, the photo-tunability of the diode response of a heterojunction made of CH$_3$NH$_3$PbI$_3$ and its close relative, CH$_3$NH$_3$SnI$_3$. In the dark state the device behaves as a diode, with the Sn homologue acting as the \"p\" side. The junction is extremely sensitive to illumination. A complete reversal of the diode polarity, the first observation of its kind, is seen when the junction is exposed to red laser light of 25 mW/cm$^2$ or larger power density. This finding opens up the possibility for a novel class of opto-electronic devices.",
+                    "authors": [
+                      "M. Spina",
+                      "L. Mihály",
+                      "K. Holczer",
+                      "B. Náfrádi",
+                      "A. Pisoni",
+                      "L. Forró",
+                      "E. Horváth"
+                    ],
+                    "published": "2016-04-20T06:36:52Z",
+                    "updated": "2016-04-20T06:36:52Z",
+                    "url": "http://arxiv.org/abs/1604.05840v1",
+                    "pdf_url": "https://arxiv.org/pdf/1604.05840v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cond-mat.mtrl-sci",
+                    "categories": [
+                      "cond-mat.mtrl-sci",
+                      "cond-mat.str-el"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "I couldn't find a specific paper directly related to the mathematical problem \"Chấp nhận tách.\" The search results returned papers related to chemical compounds and quantum mechanics, but none seem to address the mathematical problem you mentioned.\n\nIf you have more specific details or another name for the problem, please let me know, and I can try searching again.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "Chấp nhận tách",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "Chấp nhận tách",
+            "api_query": "all:Ch AND all:nh AND all:ch",
+            "total_results": 454,
+            "items": [
+              {
+                "arxiv_id": "2405.09094v1",
+                "title": "Magnetic interactions based on proton orbital motion in CH$_3$NH$_3$PbI$_3$ and CH$_3$NH$_3$PbBr$_3$",
+                "summary": "The microscopic origin of the remarkable optoelectronic properties of one of the most studied contemporary materials remains unclear. Here, we identify the existence of magnetic interactions between intermolecular proton orbitals in CH$_3$NH$_3$PbI$_3$ and CH$_3$NH$_3$PbBr$_3$. In particular, a unique sharp drop and a pronounced step-up discontinuity in the magnetic susceptibility at the tetragonal-to-cubic phase transitions are identified in CH$_3$NH$_3$PbI$_3$ and CH$_3$NH$_3$PbBr$_3$, respectively. The magnetic interactions in the orthorhombic and tetragonal phases are dependent on thermal history and lattice orientation while nearly independent of the applied external magnetic field. In CH$_3$NH$_3$PbBr$_3$, the CH$_3$ and NH$_3$$^+$ components reorient in an uncorrelated fashion resulting the cubic phase to also exhibit magnetic anisotropy. Our findings provide a potential link connecting the highly light-absorbing CH$_3$NH$_3$$^+$ and the exceptional properties of the charge carriers of the inorganic framework in hybrid perovskite solar cells.",
+                "authors": [
+                  "Lei Meng",
+                  "Miao Miao Zhao",
+                  "Yi Yang Xu",
+                  "Chu Xin Peng",
+                  "Yang Yang",
+                  "Tian Tian Xing",
+                  "Peng Ren",
+                  "Fei Yen"
+                ],
+                "published": "2024-05-15T05:12:07Z",
+                "updated": "2024-05-15T05:12:07Z",
+                "url": "http://arxiv.org/abs/2405.09094v1",
+                "pdf_url": "https://arxiv.org/pdf/2405.09094v1",
+                "source": "arxiv.org",
+                "primary_category": "cond-mat.mtrl-sci",
+                "categories": [
+                  "cond-mat.mtrl-sci"
+                ]
+              },
+              {
+                "arxiv_id": "1909.00528v1",
+                "title": "Survey Observation of CH$_3$NH$_2$ and Its Formation Process",
+                "summary": "We present the observational result of a glycine precursor, methylamine (CH$_3$NH$_2$), together with methanol (CH$_3$OH) and methanimine (CH$_2$NH) towards high-mass star-forming regions, NGC6334I, G10.47+0.03, G31.41+0.3, and W51~e1/e2 using ALMA. The molecular abundances toward these sources were derived using the rotational diagram method and compared with our state-of-the-art chemical model. We found that the observed ratio of \"CH$_3$NH$_2$/CH$_3$OH\" is in between 0.11 and 2.2. We also found that the observed \"CH$_3$NH$_2$/CH$_3$OH\" ratio agrees well with our chemical model by considering the formation of CH$_3$NH$_2$ on the grain surface via hydrogenation process to HCN. This result clearly shows the importance of hydrogenation processes to form CH$_3$NH$_2$. NGC63343I MM3, where CH$_3$NH$_2$ was not detected in this study and showed \"CH$_3$NH$_2$/CH$_3$OH\" ratio of less than 0.02, is clearly distinguished from the other cores.",
+                "authors": [
+                  "Taiki Suzuki",
+                  "Liton Majumdar",
+                  "Kazuki Tokuda",
+                  "Harumi Minamoto",
+                  "Masatoshi Ohishi",
+                  "Masao Saito",
+                  "Tomoya Hirota",
+                  "Hideko Nomura",
+                  "Yoko Oya"
+                ],
+                "published": "2019-09-02T03:40:28Z",
+                "updated": "2019-09-02T03:40:28Z",
+                "url": "http://arxiv.org/abs/1909.00528v1",
+                "pdf_url": "https://arxiv.org/pdf/1909.00528v1",
+                "source": "arxiv.org",
+                "primary_category": "astro-ph.SR",
+                "categories": [
+                  "astro-ph.SR",
+                  "astro-ph.GA"
+                ]
+              },
+              {
+                "arxiv_id": "1605.02161v1",
+                "title": "Survey Observations of a Possible Glycine Precursor, Methanimine (CH$_2$NH)",
+                "summary": "We conducted survey observations of a glycine precursor, methanimine or methylenimine (CH$_2$NH), with the NRO 45 m telescope and the SMT telescope towards 12 high-mass and two low-mass star-forming regions in order to increase number of CH$_2$NH sources and to better understand the characteristics of CH2NH sources. As a result of our survey, CH$_2$NH was detected in eight sources, including four new sources. The estimated fractional abundances were ~10$^8$ in Orion KL and G10.47+0.03, while they were ~10$^9$ towards the other sources. Our hydrogen recombination line and past studies suggest that CH$_2$NH-rich sources have less evolved HII regions. The less destruction rates by UV flux from the central star would be contributed to the high CH$_2$NH abundances towards CH$_2$NH-rich sources. Our gas-grain chemical simulations suggest that CH$_2$NH is mostly formed in the gas-phase by neutral-neutral reactions rather than the product of thermal evaporation from the dust surfaces.",
+                "authors": [
+                  "Taiki Suzuki",
+                  "Masatoshi Ohishi",
+                  "Tomoya Hirota",
+                  "Masao Saito",
+                  "Liton Majumdar",
+                  "Valentine Wakelam"
+                ],
+                "published": "2016-05-07T09:15:11Z",
+                "updated": "2016-05-07T09:15:11Z",
+                "url": "http://arxiv.org/abs/1605.02161v1",
+                "pdf_url": "https://arxiv.org/pdf/1605.02161v1",
+                "source": "arxiv.org",
+                "primary_category": "astro-ph.GA",
+                "categories": [
+                  "astro-ph.GA",
+                  "astro-ph.SR"
+                ]
+              },
+              {
+                "arxiv_id": "2405.09759v1",
+                "title": "Ferroelectricity Driven by Orbital Resonance of Protons in CH$_3$NH$_3$Cl and CH$_3$NH$_3$Br",
+                "summary": "The $β$ and $γ$ phases of methylammonium chloride CH$_3$NH$_3$Cl and methylammonium bromide CH$_3$NH$_3$Br are identified to be ferroelectric $via$ pyroelectric current and dielectric constant measurements. The magnetic susceptibility also exhibits pronounced discontinuities at the Curie temperatures. We attribute the origin of spontaneous polarization to the emergence of two groups of proton orbital magnetic moments from the uncorrelated motion of the CH$_3$ and NH$_3$ groups in the $β$ and $γ$ phases. The two inequivalent frameworks of intermolecular orbital resonances interact with each other to distort the lattice in a non-centrosymmetric fashion. Our findings indicate that the structural instabilities in molecular frameworks are magnetic in origin as well as provide a new pathway toward uncovering new organic ferroelectrics.",
+                "authors": [
+                  "Chu Xin Peng",
+                  "Lei Meng",
+                  "Yi Yang Xu",
+                  "Tian Tian Xing",
+                  "Miao Miao Zhao",
+                  "Peng Ren",
+                  "Fei Yen"
+                ],
+                "published": "2024-05-16T02:06:02Z",
+                "updated": "2024-05-16T02:06:02Z",
+                "url": "http://arxiv.org/abs/2405.09759v1",
+                "pdf_url": "https://arxiv.org/pdf/2405.09759v1",
+                "source": "arxiv.org",
+                "primary_category": "cond-mat.mtrl-sci",
+                "categories": [
+                  "cond-mat.mtrl-sci",
+                  "physics.chem-ph"
+                ]
+              },
+              {
+                "arxiv_id": "1604.05840v1",
+                "title": "Photodiode Response in a CH$_3$NH$_3$PbI$_3$/CH$_3$NH$_3$SnI$_3$ Heterojunction",
+                "summary": "Since the discovery of its photovoltaic properties organometallic salt CH$_3$NH$_3$PbI$_3$ became the subject of vivid interest. The material exhibits high light conversion efficiency, it lases in red color, and it can serve as the basis for light emitting diodes and photodetectors. Here we report another surprising feature of this material family, the photo-tunability of the diode response of a heterojunction made of CH$_3$NH$_3$PbI$_3$ and its close relative, CH$_3$NH$_3$SnI$_3$. In the dark state the device behaves as a diode, with the Sn homologue acting as the \"p\" side. The junction is extremely sensitive to illumination. A complete reversal of the diode polarity, the first observation of its kind, is seen when the junction is exposed to red laser light of 25 mW/cm$^2$ or larger power density. This finding opens up the possibility for a novel class of opto-electronic devices.",
+                "authors": [
+                  "M. Spina",
+                  "L. Mihály",
+                  "K. Holczer",
+                  "B. Náfrádi",
+                  "A. Pisoni",
+                  "L. Forró",
+                  "E. Horváth"
+                ],
+                "published": "2016-04-20T06:36:52Z",
+                "updated": "2016-04-20T06:36:52Z",
+                "url": "http://arxiv.org/abs/1604.05840v1",
+                "pdf_url": "https://arxiv.org/pdf/1604.05840v1",
+                "source": "arxiv.org",
+                "primary_category": "cond-mat.mtrl-sci",
+                "categories": [
+                  "cond-mat.mtrl-sci",
+                  "cond-mat.str-el"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:09:15"
+    }
+  ]
+}

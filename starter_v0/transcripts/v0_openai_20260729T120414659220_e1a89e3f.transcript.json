@@ -1,0 +1,222 @@
+{
+  "transcript_id": "v0_openai_20260729T120414659220_e1a89e3f",
+  "version": "v0",
+  "artifact_version": "v0+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openai",
+  "model": "gpt-4o",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T12:04:14",
+  "updated_at": "2026-07-29T12:04:42",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T12:04:14",
+      "user": "Tìm 3 paper mới về AI agents và nêu đóng góp chính.",
+      "status": "answered",
+      "assistant_text": "Here are the contributions of three recent papers on AI agents:\n\n1. **Toward Standardized Cross-Vendor Agent Tool Trust Management in Autonomous Networks**:\n   - This paper introduces AgentToolMO, a 3GPP NRM information model designed to manage trust across vendor boundaries in autonomous networks. It aims to reduce the impact of compromised tools by providing standardized cross-vendor trust notifications and retroactive impact assessments. The framework operates within existing 3GPP management infrastructure and shows promise in containing service impacts in near-real-time. [Read more](http://arxiv.org/abs/2607.25914v1).\n\n2. **Messier: A High-Resolution Corpus for Cross-Benchmark Agent Evaluation**:\n   - Messier is a comprehensive corpus that consolidates benchmark scores across 30 benchmarks, 714 agents, and numerous tasks and verifiers. It provides a standardized framework for evaluating AI agents, revealing uneven progress across different benchmarks. The corpus supports detailed analysis and capability scaling, aligning with existing evaluation indices. [Read more](http://arxiv.org/abs/2607.25891v1).\n\n3. **Distributing Security Controls Through Harness Engineering**:\n   - This paper presents SHarD (Secure Harness Distribution), which demonstrates that security controls such as OS sandboxing and skill scanning can be effectively distributed to AI coding agents. SHarD achieves a perfect score in security tests, showing that these controls can be embedded and distributed efficiently, mitigating risks associated with autonomous agent behavior. [Read more](http://arxiv.org/abs/2607.25890v1).\n\nThese papers contribute to the fields of trust management, evaluation standardization, and security in AI agents.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "AI agents",
+                "max_results": 3,
+                "sort_by": "submittedDate"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "AI agents",
+                "max_results": 3,
+                "sort_by": "submittedDate"
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "AI agents",
+                "api_query": "all:AI AND all:agents",
+                "total_results": 11094,
+                "items": [
+                  {
+                    "arxiv_id": "2607.25914v1",
+                    "title": "Toward Standardized Cross-Vendor Agent Tool Trust Management in Autonomous Networks",
+                    "summary": "Autonomous Network Levels 4-5 require AI agents to invoke tools across vendor boundaries without human oversight, yet existing management standards lack a standardized mechanism for cross-vendor trust visibility. When a tool from Vendor B is compromised, agents from Vendor A continue invoking it -- unaware of the trust degradation -- causing cascading service impact. We present AgentToolMO, a proposed 3GPP NRM information model for agent tool trust management. The model comprises: a formally defined trust state machine with provable graduated enforcement, damped cascade propagation with bounded convergence, cross-vendor trust notifications via existing Management Services (MnS) interfaces, and retroactive impact assessment through NRM dependency graph traversal. Simulation-based evaluation across multi-vendor topologies shows that standardized cross-vendor notifications reduce blast radius from hours-scale undetected propagation to near-real-time containment bounded by MnS notification delivery, with cascade convergence guaranteed in bounded iterations and sub-linear notification scaling across vendor domains. The framework operates within existing 3GPP management infrastructure, leverages existing protocols, and provides a standardization pathway for trustworthy multi-vendor autonomous network management.",
+                    "authors": [
+                      "Ravi Kant Sharma",
+                      "Ashutosh Uttam",
+                      "Ajay Kumar"
+                    ],
+                    "published": "2026-07-28T16:06:41Z",
+                    "updated": "2026-07-28T16:06:41Z",
+                    "url": "http://arxiv.org/abs/2607.25914v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.25914v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI",
+                      "cs.CR",
+                      "cs.NI"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2607.25891v1",
+                    "title": "Messier: A High-Resolution Corpus for Cross-Benchmark Agent Evaluation",
+                    "summary": "Evaluating AI agents in interactive environments is hindered by fragmented tasks, scaffolds, verifiers, and scoring rules. Existing efforts focus on narrow settings, remain limited in scale, or require costly reruns, leaving much of the empirical record incomparable. We introduce Messier, a unified corpus of 957,253 records that span 30 benchmarks, 714 agents, 11,891 tasks, and 74,205 verifiers. Messier consolidates public benchmark scores and supplements them with five-agent runs across six underrepresented professional and scientific domains, including a recent legal benchmark. Each record is standardized by model, scaffold, environment, task, verifier, and aggregation rule, with SOC/NAICS classifications for occupational and industry analysis. Using this corpus, we show frontier progress is uneven across benchmark types, with \"function calling\" saturated, \"programming\" improving the fastest, and \"enterprise workflows\" remaining the most challenging. Furthermore, counterfactual rescoring shows that strict all-pass aggregation in multi-verifier tasks can obscure progress and artificially alter agent rankings. From these standardized records, we derive capability scales that align with Epoch's Evaluation Capability Index rankings at Spearman \\r{ho} = 0.81 and can be specialized by domain, occupation, action space, or verifier type. Messier provides a foundational, reusable infrastructure for agent capability scaling, benchmark auditing, and fine-grained analysis of evaluation failures.",
+                    "authors": [
+                      "Stefan Krsteski",
+                      "Charlotte Meyer",
+                      "Guillaume Allegre",
+                      "Tony O'Halloran",
+                      "Alexandre Sallinen"
+                    ],
+                    "published": "2026-07-28T15:50:19Z",
+                    "updated": "2026-07-28T15:50:19Z",
+                    "url": "http://arxiv.org/abs/2607.25891v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.25891v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI",
+                      "cs.DB"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2607.25890v1",
+                    "title": "Distributing Security Controls Through Harness Engineering",
+                    "summary": "AI coding agents are being adopted at historic speed, yet security and risk concerns remain the primary barrier to scaling agentic AI across organizations. Existing security controls for coding agents are not systematically distributed to engineering teams, and vendor-native solutions introduce ecosystem dependencies that may not suit every deployment context. This paper investigates whether off-the-shelf security controls can be implemented on commercial AI coding agents and scaled to a distributed user base via a custom agent harness. A phased testing methodology was applied across four agent configurations --- two commercial agents with and without controls, a baseline harness, and a security-hardened harness --- using a 23-test suite derived from the OWASP Top 10 for Agentic Applications. SHarD (Secure Harness Distribution), a distributable harness built on the Pi agent harness, demonstrated that three categories of security controls --- OS sandboxing, skill scanning, and tool restriction --- can be embedded and distributed via a single install command while retaining equivalent efficacy to direct installation on commercial agents. SHarD achieved an adjusted score of 100\\%, matching the best securely configured commercial agent, with no regression across any test category. Notable observations include evidence that model non-determinism produces inconsistent security outcomes and that autonomous agent behavior can cross system boundaries in ways that OS sandboxing directly mitigates. Initial characteristics toward a control harness fitness framework are proposed, and a third research question is identified for future investigation.",
+                    "authors": [
+                      "William Robert Gore"
+                    ],
+                    "published": "2026-07-28T15:50:16Z",
+                    "updated": "2026-07-28T15:50:16Z",
+                    "url": "http://arxiv.org/abs/2607.25890v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.25890v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are the contributions of three recent papers on AI agents:\n\n1. **Toward Standardized Cross-Vendor Agent Tool Trust Management in Autonomous Networks**:\n   - This paper introduces AgentToolMO, a 3GPP NRM information model designed to manage trust across vendor boundaries in autonomous networks. It aims to reduce the impact of compromised tools by providing standardized cross-vendor trust notifications and retroactive impact assessments. The framework operates within existing 3GPP management infrastructure and shows promise in containing service impacts in near-real-time. [Read more](http://arxiv.org/abs/2607.25914v1).\n\n2. **Messier: A High-Resolution Corpus for Cross-Benchmark Agent Evaluation**:\n   - Messier is a comprehensive corpus that consolidates benchmark scores across 30 benchmarks, 714 agents, and numerous tasks and verifiers. It provides a standardized framework for evaluating AI agents, revealing uneven progress across different benchmarks. The corpus supports detailed analysis and capability scaling, aligning with existing evaluation indices. [Read more](http://arxiv.org/abs/2607.25891v1).\n\n3. **Distributing Security Controls Through Harness Engineering**:\n   - This paper presents SHarD (Secure Harness Distribution), which demonstrates that security controls such as OS sandboxing and skill scanning can be effectively distributed to AI coding agents. SHarD achieves a perfect score in security tests, showing that these controls can be embedded and distributed efficiently, mitigating risks associated with autonomous agent behavior. [Read more](http://arxiv.org/abs/2607.25890v1).\n\nThese papers contribute to the fields of trust management, evaluation standardization, and security in AI agents.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "AI agents",
+            "max_results": 3,
+            "sort_by": "submittedDate"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "AI agents",
+            "api_query": "all:AI AND all:agents",
+            "total_results": 11094,
+            "items": [
+              {
+                "arxiv_id": "2607.25914v1",
+                "title": "Toward Standardized Cross-Vendor Agent Tool Trust Management in Autonomous Networks",
+                "summary": "Autonomous Network Levels 4-5 require AI agents to invoke tools across vendor boundaries without human oversight, yet existing management standards lack a standardized mechanism for cross-vendor trust visibility. When a tool from Vendor B is compromised, agents from Vendor A continue invoking it -- unaware of the trust degradation -- causing cascading service impact. We present AgentToolMO, a proposed 3GPP NRM information model for agent tool trust management. The model comprises: a formally defined trust state machine with provable graduated enforcement, damped cascade propagation with bounded convergence, cross-vendor trust notifications via existing Management Services (MnS) interfaces, and retroactive impact assessment through NRM dependency graph traversal. Simulation-based evaluation across multi-vendor topologies shows that standardized cross-vendor notifications reduce blast radius from hours-scale undetected propagation to near-real-time containment bounded by MnS notification delivery, with cascade convergence guaranteed in bounded iterations and sub-linear notification scaling across vendor domains. The framework operates within existing 3GPP management infrastructure, leverages existing protocols, and provides a standardization pathway for trustworthy multi-vendor autonomous network management.",
+                "authors": [
+                  "Ravi Kant Sharma",
+                  "Ashutosh Uttam",
+                  "Ajay Kumar"
+                ],
+                "published": "2026-07-28T16:06:41Z",
+                "updated": "2026-07-28T16:06:41Z",
+                "url": "http://arxiv.org/abs/2607.25914v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.25914v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.CR",
+                  "cs.NI"
+                ]
+              },
+              {
+                "arxiv_id": "2607.25891v1",
+                "title": "Messier: A High-Resolution Corpus for Cross-Benchmark Agent Evaluation",
+                "summary": "Evaluating AI agents in interactive environments is hindered by fragmented tasks, scaffolds, verifiers, and scoring rules. Existing efforts focus on narrow settings, remain limited in scale, or require costly reruns, leaving much of the empirical record incomparable. We introduce Messier, a unified corpus of 957,253 records that span 30 benchmarks, 714 agents, 11,891 tasks, and 74,205 verifiers. Messier consolidates public benchmark scores and supplements them with five-agent runs across six underrepresented professional and scientific domains, including a recent legal benchmark. Each record is standardized by model, scaffold, environment, task, verifier, and aggregation rule, with SOC/NAICS classifications for occupational and industry analysis. Using this corpus, we show frontier progress is uneven across benchmark types, with \"function calling\" saturated, \"programming\" improving the fastest, and \"enterprise workflows\" remaining the most challenging. Furthermore, counterfactual rescoring shows that strict all-pass aggregation in multi-verifier tasks can obscure progress and artificially alter agent rankings. From these standardized records, we derive capability scales that align with Epoch's Evaluation Capability Index rankings at Spearman \\r{ho} = 0.81 and can be specialized by domain, occupation, action space, or verifier type. Messier provides a foundational, reusable infrastructure for agent capability scaling, benchmark auditing, and fine-grained analysis of evaluation failures.",
+                "authors": [
+                  "Stefan Krsteski",
+                  "Charlotte Meyer",
+                  "Guillaume Allegre",
+                  "Tony O'Halloran",
+                  "Alexandre Sallinen"
+                ],
+                "published": "2026-07-28T15:50:19Z",
+                "updated": "2026-07-28T15:50:19Z",
+                "url": "http://arxiv.org/abs/2607.25891v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.25891v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.DB"
+                ]
+              },
+              {
+                "arxiv_id": "2607.25890v1",
+                "title": "Distributing Security Controls Through Harness Engineering",
+                "summary": "AI coding agents are being adopted at historic speed, yet security and risk concerns remain the primary barrier to scaling agentic AI across organizations. Existing security controls for coding agents are not systematically distributed to engineering teams, and vendor-native solutions introduce ecosystem dependencies that may not suit every deployment context. This paper investigates whether off-the-shelf security controls can be implemented on commercial AI coding agents and scaled to a distributed user base via a custom agent harness. A phased testing methodology was applied across four agent configurations --- two commercial agents with and without controls, a baseline harness, and a security-hardened harness --- using a 23-test suite derived from the OWASP Top 10 for Agentic Applications. SHarD (Secure Harness Distribution), a distributable harness built on the Pi agent harness, demonstrated that three categories of security controls --- OS sandboxing, skill scanning, and tool restriction --- can be embedded and distributed via a single install command while retaining equivalent efficacy to direct installation on commercial agents. SHarD achieved an adjusted score of 100\\%, matching the best securely configured commercial agent, with no regression across any test category. Notable observations include evidence that model non-determinism produces inconsistent security outcomes and that autonomous agent behavior can cross system boundaries in ways that OS sandboxing directly mitigates. Initial characteristics toward a control harness fitness framework are proposed, and a third research question is identified for future investigation.",
+                "authors": [
+                  "William Robert Gore"
+                ],
+                "published": "2026-07-28T15:50:16Z",
+                "updated": "2026-07-28T15:50:16Z",
+                "url": "http://arxiv.org/abs/2607.25890v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.25890v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:04:24"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T12:04:38",
+      "user": "hãy trả lời abwfng tiếng việt",
+      "status": "answered",
+      "assistant_text": "Dưới đây là đóng góp chính của ba bài báo mới về AI agents:\n\n1. **Toward Standardized Cross-Vendor Agent Tool Trust Management in Autonomous Networks**:\n   - Bài báo này giới thiệu AgentToolMO, một mô hình thông tin 3GPP NRM được thiết kế để quản lý niềm tin qua các ranh giới nhà cung cấp trong các mạng tự trị. Nó nhằm giảm thiểu tác động của các công cụ bị xâm phạm bằng cách cung cấp thông báo niềm tin tiêu chuẩn hóa giữa các nhà cung cấp và đánh giá tác động hồi tố. Khung này hoạt động trong cơ sở hạ tầng quản lý 3GPP hiện có và cho thấy tiềm năng trong việc giảm thiểu tác động dịch vụ gần như theo thời gian thực. [Đọc thêm](http://arxiv.org/abs/2607.25914v1).\n\n2. **Messier: A High-Resolution Corpus for Cross-Benchmark Agent Evaluation**:\n   - Messier là một tập hợp dữ liệu toàn diện hợp nhất điểm số đánh giá trên 30 tiêu chuẩn, 714 tác nhân và nhiều nhiệm vụ và bộ kiểm tra. Nó cung cấp một khung chuẩn hóa để đánh giá các tác nhân AI, tiết lộ sự tiến bộ không đồng đều trên các tiêu chuẩn khác nhau. Tập hợp dữ liệu này hỗ trợ phân tích chi tiết và mở rộng khả năng, phù hợp với các chỉ số đánh giá hiện có. [Đọc thêm](http://arxiv.org/abs/2607.25891v1).\n\n3. **Distributing Security Controls Through Harness Engineering**:\n   - Bài báo này trình bày SHarD (Secure Harness Distribution), cho thấy rằng các kiểm soát bảo mật như sandboxing hệ điều hành và quét kỹ năng có thể được phân phối hiệu quả tới các tác nhân mã hóa AI. SHarD đạt điểm tuyệt đối trong các bài kiểm tra bảo mật, cho thấy rằng các kiểm soát này có thể được nhúng và phân phối hiệu quả, giảm thiểu rủi ro liên quan đến hành vi của tác nhân tự trị. [Đọc thêm](http://arxiv.org/abs/2607.25890v1).\n\nNhững bài báo này đóng góp vào các lĩnh vực quản lý niềm tin, chuẩn hóa đánh giá và bảo mật trong các tác nhân AI.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Dưới đây là đóng góp chính của ba bài báo mới về AI agents:\n\n1. **Toward Standardized Cross-Vendor Agent Tool Trust Management in Autonomous Networks**:\n   - Bài báo này giới thiệu AgentToolMO, một mô hình thông tin 3GPP NRM được thiết kế để quản lý niềm tin qua các ranh giới nhà cung cấp trong các mạng tự trị. Nó nhằm giảm thiểu tác động của các công cụ bị xâm phạm bằng cách cung cấp thông báo niềm tin tiêu chuẩn hóa giữa các nhà cung cấp và đánh giá tác động hồi tố. Khung này hoạt động trong cơ sở hạ tầng quản lý 3GPP hiện có và cho thấy tiềm năng trong việc giảm thiểu tác động dịch vụ gần như theo thời gian thực. [Đọc thêm](http://arxiv.org/abs/2607.25914v1).\n\n2. **Messier: A High-Resolution Corpus for Cross-Benchmark Agent Evaluation**:\n   - Messier là một tập hợp dữ liệu toàn diện hợp nhất điểm số đánh giá trên 30 tiêu chuẩn, 714 tác nhân và nhiều nhiệm vụ và bộ kiểm tra. Nó cung cấp một khung chuẩn hóa để đánh giá các tác nhân AI, tiết lộ sự tiến bộ không đồng đều trên các tiêu chuẩn khác nhau. Tập hợp dữ liệu này hỗ trợ phân tích chi tiết và mở rộng khả năng, phù hợp với các chỉ số đánh giá hiện có. [Đọc thêm](http://arxiv.org/abs/2607.25891v1).\n\n3. **Distributing Security Controls Through Harness Engineering**:\n   - Bài báo này trình bày SHarD (Secure Harness Distribution), cho thấy rằng các kiểm soát bảo mật như sandboxing hệ điều hành và quét kỹ năng có thể được phân phối hiệu quả tới các tác nhân mã hóa AI. SHarD đạt điểm tuyệt đối trong các bài kiểm tra bảo mật, cho thấy rằng các kiểm soát này có thể được nhúng và phân phối hiệu quả, giảm thiểu rủi ro liên quan đến hành vi của tác nhân tự trị. [Đọc thêm](http://arxiv.org/abs/2607.25890v1).\n\nNhững bài báo này đóng góp vào các lĩnh vực quản lý niềm tin, chuẩn hóa đánh giá và bảo mật trong các tác nhân AI.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T12:04:42"
+    }
+  ]
+}

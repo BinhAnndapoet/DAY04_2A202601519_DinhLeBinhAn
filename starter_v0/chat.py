@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 from datetime import datetime
@@ -157,6 +158,89 @@ def write_transcript(path: Path, transcript: dict[str, Any]) -> None:
     path.write_text(json.dumps(transcript, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
 
 
+# Columns logged for every Thinking / Tool-call / Tool-result step. Append-only,
+# one row per step, so the demo leaves a replayable trace of how the agent moved.
+AGENT_TRACE_HEADER = [
+    "timestamp",
+    "version",
+    "provider",
+    "model",
+    "turn",
+    "round",
+    "step",
+    "content",
+]
+
+
+def _trace_tool_call_content(call_summary: dict[str, Any]) -> str:
+    name = call_summary.get("name", "unknown")
+    args = call_summary.get("args", {})
+    return f"{name}({json.dumps(args, ensure_ascii=False, sort_keys=True)})"
+
+
+def _trace_tool_result_content(result: Any, *, max_chars: int = 240) -> str:
+    if isinstance(result, dict):
+        if result.get("error"):
+            message = result.get("message") or result.get("error")
+            return f"error: {message}"[:max_chars]
+        if isinstance(result.get("items"), list):
+            return f"{len(result['items'])} item(s)"
+        if result.get("awaiting_user"):
+            return "awaiting_user"
+    text = json.dumps(result, ensure_ascii=False, sort_keys=True, default=str)
+    return text[:max_chars]
+
+
+def append_agent_trace(
+    trace_path: Path,
+    *,
+    version: str,
+    provider: str,
+    model: str | None,
+    turn_index: int,
+    rounds: list[dict[str, Any]],
+) -> None:
+    """Append one CSV row per agent step to ``trace_path``.
+
+    Creates the file (with header) on first use. Each round contributes a
+    ``thinking`` row (when the model emitted reasoning text) and, for every tool
+    it invoked, a ``tool_call`` row immediately followed by its ``tool_result``
+    row. Designed to be best-effort: callers wrap it in their own error handling.
+    """
+    trace_path.parent.mkdir(parents=True, exist_ok=True)
+    write_header = not trace_path.exists() or trace_path.stat().st_size == 0
+    model_label = model or "default"
+    with trace_path.open("a", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        if write_header:
+            writer.writerow(AGENT_TRACE_HEADER)
+        for round_record in rounds or []:
+            round_number = round_record.get("round", "")
+            thinking = round_record.get("assistant_text")
+            if thinking and str(thinking).strip():
+                writer.writerow([
+                    now_iso(), version, provider, model_label,
+                    turn_index, round_number, "thinking",
+                    str(thinking).strip()[:500],
+                ])
+            calls = round_record.get("tool_calls") or []
+            results = round_record.get("tool_results") or []
+            step_count = max(len(calls), len(results))
+            for index in range(step_count):
+                if index < len(calls):
+                    writer.writerow([
+                        now_iso(), version, provider, model_label,
+                        turn_index, round_number, "tool_call",
+                        _trace_tool_call_content(calls[index]),
+                    ])
+                if index < len(results):
+                    writer.writerow([
+                        now_iso(), version, provider, model_label,
+                        turn_index, round_number, "tool_result",
+                        _trace_tool_result_content(results[index].get("result")),
+                    ])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Interactive Research Agent chat with transcript logging.")
     parser.add_argument("--provider", choices=["openrouter", "openai", "anthropic", "gemini"], required=True)
@@ -173,7 +257,15 @@ def main() -> None:
     tool_declarations = load_tool_declarations(args.tools)
     openai_tools = to_openai_tools(tool_declarations)
     provider = make_provider(args.provider)
-    selected_model = args.model or getattr(provider, "default_model", None)
+    raw_model = (args.model or "").strip()
+    default_model = getattr(provider, "default_model", None)
+    # "openai"/"anthropic"/... are provider keys, not model ids — treat a blank
+    # value or a provider name as "use the provider default" so we never send the
+    # provider name to the API (it 404s as model_not_found).
+    if not raw_model or raw_model.lower() == args.provider:
+        selected_model = default_model
+    else:
+        selected_model = raw_model
     artifact_version = build_artifact_version(args.version, args.system_prompt, args.tools)
 
     timestamp = datetime.now().strftime("%Y%m%dT%H%M%S%f")
@@ -236,7 +328,7 @@ def main() -> None:
                 provider=provider,
                 messages=messages,
                 tools=openai_tools,
-                model=args.model,
+                model=selected_model,
                 max_tool_rounds=args.max_tool_rounds,
             )
             turn_record.update(result)

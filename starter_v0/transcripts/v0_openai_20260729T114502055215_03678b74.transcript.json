@@ -1,0 +1,28 @@
+{
+  "transcript_id": "v0_openai_20260729T114502055215_03678b74",
+  "version": "v0",
+  "artifact_version": "v0+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openai",
+  "model": "openai",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T11:45:02",
+  "updated_at": "2026-07-29T11:45:05",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T11:45:02",
+      "user": "cho tôi 1 paper về transformer",
+      "status": "provider_error",
+      "assistant_text": null,
+      "rounds": [],
+      "tool_events": [],
+      "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `openai` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}",
+      "ended_at": "2026-07-29T11:45:05"
+    }
+  ]
+}

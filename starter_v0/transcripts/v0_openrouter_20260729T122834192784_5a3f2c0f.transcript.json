@@ -1,0 +1,28 @@
+{
+  "transcript_id": "v0_openrouter_20260729T122834192784_5a3f2c0f",
+  "version": "v0",
+  "artifact_version": "v0+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T12:28:34",
+  "updated_at": "2026-07-29T12:28:35",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T12:28:34",
+      "user": "Đọc URL này và tóm tắt các luận điểm chính giúp tôi.",
+      "status": "provider_error",
+      "assistant_text": null,
+      "rounds": [],
+      "tool_events": [],
+      "error": "RuntimeError: Missing API key env var: OPENROUTER_API_KEY",
+      "ended_at": "2026-07-29T12:28:35"
+    }
+  ]
+}

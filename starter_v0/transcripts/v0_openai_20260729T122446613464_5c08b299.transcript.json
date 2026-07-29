@@ -1,0 +1,102 @@
+{
+  "transcript_id": "v0_openai_20260729T122446613464_5c08b299",
+  "version": "v0",
+  "artifact_version": "v0+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openai",
+  "model": "gpt-4o",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T12:24:46",
+  "updated_at": "2026-07-29T12:25:06",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T12:24:46",
+      "user": "Đọc URL này và tóm tắt các luận điểm chính giúp tôi.",
+      "status": "answered",
+      "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T12:24:48"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T12:24:51",
+      "user": "https://arxiv.org/pdf/1706.03762",
+      "status": "answered",
+      "assistant_text": "The document at the provided URL appears to be a PDF file with compressed data, likely containing complex content that includes both text and binary data. Unfortunately, the content is not directly readable or summarizable in its current form due to encoding and compression.\n\nIf you need a detailed summary of the paper, you might consider accessing the document through a PDF reader or viewer that can handle such files, or provide a different URL if available.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "fetch",
+              "args": {
+                "url": "https://arxiv.org/pdf/1706.03762"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "fetch",
+              "args": {
+                "url": "https://arxiv.org/pdf/1706.03762"
+              },
+              "result": {
+                "tool": "read_url",
+                "url": "https://arxiv.org/pdf/1706.03762",
+                "items": [
+                  {
+                    "title": "https://arxiv.org/pdf/1706.03762",
+                    "url": "https://arxiv.org/pdf/1706.03762",
+                    "source": "arxiv.org",
+                    "summary": "%PDF-1.5\n%�\n137 0 obj < < /Filter /FlateDecode /Length 4011 >>\nstream\nxڵZK�䶑��W��\u0015��%^|hc\u000f�C+{#4�zO�>���U���\u0016\u001fj�~�3�\t\u0012`qf���� ��#�_&�=\\\u001e��\u001f������7���e� DZ\u0019#\u001f�^\u001fDV>\u0014\"K3U < < �\u001f>&�p\u0014Y�%�� ʤ?ϧ���������J�\\���4�0o� �4yiRe���\r���=��`��p��N:;\u000fu����AdI?|\u001a\u001f��Jھ���x��8��F�7{�����{��hI%s8���\u0015�h֝)\u0005d\"�ɞiº;S�r0I=Y~\u001b���jY����|�vU�dZdjw�/���!����N�64A��W:O��ajNs[\u000f\u0007U%��y�\u000f�J~=\b�X�y��?�k����\"\u001fu��q�_�f��\u0003�p=�\u0013�'��%���\u001d�$7�ކ�>]-D�*���2�����l��I\u0015�\u0001Fo8�\u000e��Ԩ�\u000e7\ru7ze;�J&��Kko�N%�q>]��m\u0017�m�]��bi ���\u0019\f��\u001b���\u001e4����>�^����\u001f\u001b����\"��\"�\u000e�1b\r�� ���\u0018��G@��}�\u0016��7ӵ�6Ĩ�ۢN���V��Z��\u0012\u0012_\u001b\u0017\t��\u0002���g>\r����B=�\u0013�\f�G�@�-L\t�[��%�鵶�Lב-��A��1g���:�`�ܚ��/��A�Bo�i�G�\u0017�8\u0010�0ʴ�`/$з�c�\u0012���\u0013�\u001d`0'Kq8�+�\u0002bjɘkDǆ��T��e�47\u0000\u0016�9�q�5\u0001^��b�&#��8\n]\u0014\u001cq.���\u0001ny�\u0006��\u0015\"��J/��_Ō4Cs�4R{\u000b;�T\u0016��K�=\u001e*��\"&{�\tɢ�ֻs�\u001b��2⏩Ҳ`H��Jf�/���\u0014y�����\u0002L5���\u0019���:9��7��\u0014\u000bB��#]1\u0014O9��\u0001���f�4\u000b�=�#�lB�\u0001�0A�p\u0000�G��\fX3��\"�@Q{��\f�%x��3��u\u0010��\u0019�x\u00162���ڣb�\u0007�9\u001ct���`o0�.����\"�Q��&M�@�;8G�Ƌ�=]�\u0019o\u001cT\u0016HFX\u001f�\u0015y\u0002\u000e9������\u000b�\u001b�O\t�\u0003=\u001dK�cؖq3�� \u0012�\u0010ScH#�-\u0017�~�\u0005\u001aF�[�\u0019zy�\n�\u001c�}��+�\n0!E=\u0018�ꑒBh��$��v�QR�\u0000\u0012�g�f;��'��0-�Ӟ�\u0011�K�\u0003���3����j\u001bFg�\u0006�,���ߞc�0[\u0018\u0006��sz�a:!�g < s}\u000bԢ�ؼ ���.��vm�\u0001Tn֏�\u0004�\n�D\"\u0012Q�ͤ�Ll�{������\b|��\u000b*�?GM�W���􂖸{.�U����b�\u001deT�6��Nc��|�&A�n�A�W`)Z���5s]�o2>#`�9�.u�P�\u0019v��\u0000�eN�V��Ly�\u0001�5��w�\u0007]\u00023rF\u0019��\u0005�\u001e\u00073\n\u001dF:���\u000b�\u0011������tP&A�C�h�쿤�\u0001����Q��Р\u001d!k\u000f,\n��QNLB&^ �\u0001�_/Y�\b\r\\\u0017�\fC����� < %�\u001d���D�?CQ嫨؉�� < \u000f5����.m�RsD�\u001a:V8���ȱ\u0018b�͇ҍ.�\u0011T\u0010Ls�S��ϓ�y�,&��]\u0011�\u0010\u0002�����\u001b\u0014\u0002�M�\u0015�\u001e�i\u001f�\u0011E��3ؚ4��9Q�ZZ�Vf�%;b����L�z-\u0005���9\u0001 < ������_�m&�o�:��B�ŮY \u0006Ao\u001c��\u0019\n�\u0013��Z\u001b��,�5&a@�\u0007\u001e����re�����µ~��S\\�\u0016'�\u0007pL�|t\bɕ���ӧ\u000b�&g�+�#���\b[U&ʹ\b�\r\u0011��{��3��B\\[\"�\u0016�o�\\��\f�,7\u0006ⓟ�Օ e�\u0007wt�\r�/��r�%����8�\\P`�\u000e\u00139��\u0014��\u001ew���\u00140C\b��I���B���9>߰��HX\\�e�\u0018q�Q���\tA�kB����!Exy\u001d�\u001b��\u0010�\u001e^\u001apP.\u00195f�\u001d\u0018�`&�`Ў�X\u001a�w��d* < �\u0001��tPq���y�\u0013�{�?&��=�  U[\u000f\u0014\u0014r�A\r)�\u001f��13ڞP*���RI\f?e�tx�Z*\u0015�5՟\u0010D�q\u000f~(����7\b\u0013J[�h1>a�ܼ\"3\\\f�[\u001eF��L&-\u001c�c�(�b�rx�\u0006�\u0007���\r6,�T�U�/qW\u0019We��:\"s\u0005킔���ʧ�������'����>gd��2�8\u0006\u001c�S˒ղ�](�W�\u0013R�\u0000:\u0017-/Yˡo�r\u0014~�Y.�҉�j~�\u0012\u0001��\u001f���hu,4h�!$��\u001al/QՑ�쬈� < ��É2�}:��\u0019\\\u0011\r��9\u001d�����\u0005h�H$�GԸ�\u00019��Ne^aw���R8A�\u0003(Q/�\u000e9c�'P���GD��2�o�\u0006��:����Y�\u0019��мl��h\u0003�\u000e�uI�A��L�\u0012�*8��ٶ���\\Q\u001b!uƂ5\u0017���h)����\u001cC�j�:Q���h8\u0004���!������\u0004B\u0007�#G\u0000��f1�����\b������;�_��\u001f�\u0004aל�⍍&�\u0003M�]s���༏�0�H�LW�ͣ/t��{����\\��^�n\u000f2��uf�'XĂR.�\u0014\n�&\b��\"�����\nK��k��z}��\u000f�j��\u000b\u001e��\u0005k=0��3\u0013TT$��v�}���N?�\u0001��I\u0010�Y~�f_\u001dB^6�m�\u0011��g�QW�\r[?6����Wk���6�\u001e\u0005�������o,�Yr�\u001a\u000b`Q*s�k?t���\u001f��V)��.��;i葜-�\u0010\u0000\u001e�_��!\u0001�\"ʉ�7P�RF\u0016Q�%���^����\u0018q�nH\u0004���;^Wy\b\u0011��F��t[$��B\u001c1\u0006�\u0017|͝a\u0005�\u001c�\u0005����\u0004��\r���\u0015%\f®Go�\u0018��w;,����; < ���+�p�,��e�b�u�ޓ*�62�if�G < �\u0012Q��> .��?��8��{g���4Z,\u0001u3�V��|�Wx\u000f)ݯ2�B*�@���{i,|\u0004�x��}����L3�`.��>��\u0019\u0002��Q.\u0001\u0006����;CQ>oV�X=�\u0003%\u0006�%����\u0006\u001f~�*\rK)\r_�\u0017n\u0017M�\u000ea�����\u0013�=_n���h�$�w5��1�*��������%��I�m�0��������Ҭ4��͢�f!3i��1��\u0015\u0000.�V1���������L\u0015�\u0004^/\"Q;��P\u001e:��\u000f�\u0002\\f��z�#`1�m>�S��{[��;(E��\u001ev\u0010�\\��oοb/�ȁ��ϡ�l�w�_�pR\u0013oﯙ�v.�UZ\u0016�_���sG\u000fL���~�3�N5$c\u0001ѿ�\r�E���ߺV��\u001d�H �J_F�w;�2��-\u0005Dp\u0016��?\t�.R\u0003\u0007�X��\u0017�d�a��d!V���\u001f'�\\����-\u0013��\nD�JD*\u00050/���=\t��(/��8\u001cM&�$9���Xh�\u0011�\u0006��g���=щ�\u0000��/\u0010�ʲ�\u0000�\ty\u0005A\u000bؗ�\u0018������T�V����\u0017�\u0005`[Uy�\t�s�AH��\u000boι����FrzA�\u001cv�Q��\u0005\u0011�\u0015գ?&�l�\u0002���\t���\u0011s���\u0013%����N|�7gt��䷝c�e���N'DU�\u0019\u001c,䀿{&\u001fɁ��\u0018�����I�_,ҧ���#\f\u0002]��G��\u0004A�d�6x�_��e��\u001fk�����\t�>\u0012��\u001e�\u0014��.����v\u0010\u0012�ͯrx�\u0013������.� �qW�R��5����j�h��U;�;]�[~�\u0006����\u001d��@iJ}\u0012������\u0001\u0017�\u000e\u0018endstream\nendobj\n170 0 obj < < /Filter /FlateDecode /Length 1957 >>\nstream\nxڕXK��6\u0012����QƎ\u0018�ԋ\u0003�E&�,�\u0000�\u0018�C2\u0007٢��Ȓ�Gz;�>U��L���]\f�E\u0016�b����s�F�zJ�\u0012�����)D��H�R䕊���ߟD�V��H��D妹.�^W���\"�_��=��3O\u0002���?}�C�EF�B\u0015��\u0014)��T�H�F\u0014�D�&�5�����v�� < ���]�e\u001a��L��t\u001e�u?���bG\"&��\f��hX��s;��\f�����߯�\u0010I�YyS�%�\u000frd���h\u00019��,�;��@ < ]7�T\u001e?OH(���N�4�d\u001e���Xw\u001d\u0011C���2��gZ����e\u0007zچ\t�;%� < �~n����=/^�����v��h�t�\u000bj�J�t�\"�\u000bQ��9\u000e}\u000f��+� < ��\u0017;N4\u0006�hp\u0018�3�f�}QĶ?�]y�d�Ac��M�B�i < ��\u001c=mh{:�|�>{���3��uG\u0016c��\u0013\u001d_�\u0001h�\u001d�\u0018*�rQ)C\n�v���-�A��*p�\u0005\u0000D^\u0019D^\u001a��DV�\u0014sZ�]\"�4�?��b\u00189Ia�\r�\u001f�[�#{�J\n\r\u0011��aN���0��cy%�Ln����2�\u0019_K\u001dc|!�8\\�Ä~�\u0019Z\n�5m�P�+�j\u0015*�\u0014�4�{�\u0003\u001bY�69\u001cqv�v�di\u0019\u0017o��L����n\u001b\f�cݑp\u0014~b��\u0010�\u001f���wd�q�Y��\u0019Sc�\u0006OMh�2\u0015Y��\u0015�rHV�:�|\n���4Uㄱ�U1�i�\u0016��e��69ۺ���܃=�x��v��#~��\u0015��;\u0005�� < �`j/���I�\\�|\u0013��,�\"���\u001b�\u0017\u0005��Y�\u0007KNr��a&㊵M\u0002)��T�L�-�m��Q��ٕ&��cA�agb�X�\u0019Ƞ�Y�ns\r\u001b��ݤ_� pM�\u0015W�Wje\u001a���v�'�X��BF\u0003�\\\f ���Une�(r����\u0013�h 4���~��V:��.Y  \u000e/�Շ\u0019�z(�u��Y����UT��\u0010b\u001b\u0001佈ZkP����\u0004�ό�8�gb�z�X�*\u001e�����e��-pu��\u001f�����E�\u0019W��Ꝫ���ǎ?���"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "The document at the provided URL appears to be a PDF file with compressed data, likely containing complex content that includes both text and binary data. Unfortunately, the content is not directly readable or summarizable in its current form due to encoding and compression.\n\nIf you need a detailed summary of the paper, you might consider accessing the document through a PDF reader or viewer that can handle such files, or provide a different URL if available.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://arxiv.org/pdf/1706.03762"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "https://arxiv.org/pdf/1706.03762",
+            "items": [
+              {
+                "title": "https://arxiv.org/pdf/1706.03762",
+                "url": "https://arxiv.org/pdf/1706.03762",
+                "source": "arxiv.org",
+                "summary": "%PDF-1.5\n%�\n137 0 obj < < /Filter /FlateDecode /Length 4011 >>\nstream\nxڵZK�䶑��W��\u0015��%^|hc\u000f�C+{#4�zO�>���U���\u0016\u001fj�~�3�\t\u0012`qf���� ��#�_&�=\\\u001e��\u001f������7���e� DZ\u0019#\u001f�^\u001fDV>\u0014\"K3U < < �\u001f>&�p\u0014Y�%�� ʤ?ϧ���������J�\\���4�0o� �4yiRe���\r���=��`��p��N:;\u000fu����AdI?|\u001a\u001f��Jھ���x��8��F�7{�����{��hI%s8���\u0015�h֝)\u0005d\"�ɞiº;S�r0I=Y~\u001b���jY����|�vU�dZdjw�/���!����N�64A��W:O��ajNs[\u000f\u0007U%��y�\u000f�J~=\b�X�y��?�k����\"\u001fu��q�_�f��\u0003�p=�\u0013�'��%���\u001d�$7�ކ�>]-D�*���2�����l��I\u0015�\u0001Fo8�\u000e��Ԩ�\u000e7\ru7ze;�J&��Kko�N%�q>]��m\u0017�m�]��bi ���\u0019\f��\u001b���\u001e4����>�^����\u001f\u001b����\"��\"�\u000e�1b\r�� ���\u0018��G@��}�\u0016��7ӵ�6Ĩ�ۢN���V��Z��\u0012\u0012_\u001b\u0017\t��\u0002���g>\r����B=�\u0013�\f�G�@�-L\t�[��%�鵶�Lב-��A��1g���:�`�ܚ��/��A�Bo�i�G�\u0017�8\u0010�0ʴ�`/$з�c�\u0012���\u0013�\u001d`0'Kq8�+�\u0002bjɘkDǆ��T��e�47\u0000\u0016�9�q�5\u0001^��b�&#��8\n]\u0014\u001cq.���\u0001ny�\u0006��\u0015\"��J/��_Ō4Cs�4R{\u000b;�T\u0016��K�=\u001e*��\"&{�\tɢ�ֻs�\u001b��2⏩Ҳ`H��Jf�/���\u0014y�����\u0002L5���\u0019���:9��7��\u0014\u000bB��#]1\u0014O9��\u0001���f�4\u000b�=�#�lB�\u0001�0A�p\u0000�G��\fX3��\"�@Q{��\f�%x��3��u\u0010��\u0019�x\u00162���ڣb�\u0007�9\u001ct���`o0�.����\"�Q��&M�@�;8G�Ƌ�=]�\u0019o\u001cT\u0016HFX\u001f�\u0015y\u0002\u000e9������\u000b�\u001b�O\t�\u0003=\u001dK�cؖq3�� \u0012�\u0010ScH#�-\u0017�~�\u0005\u001aF�[�\u0019zy�\n�\u001c�}��+�\n0!E=\u0018�ꑒBh��$��v�QR�\u0000\u0012�g�f;��'��0-�Ӟ�\u0011�K�\u0003���3����j\u001bFg�\u0006�,���ߞc�0[\u0018\u0006��sz�a:!�g < s}\u000bԢ�ؼ ���.��vm�\u0001Tn֏�\u0004�\n�D\"\u0012Q�ͤ�Ll�{������\b|��\u000b*�?GM�W���􂖸{.�U����b�\u001deT�6��Nc��|�&A�n�A�W`)Z���5s]�o2>#`�9�.u�P�\u0019v��\u0000�eN�V��Ly�\u0001�5��w�\u0007]\u00023rF\u0019��\u0005�\u001e\u00073\n\u001dF:���\u000b�\u0011������tP&A�C�h�쿤�\u0001����Q��Р\u001d!k\u000f,\n��QNLB&^ �\u0001�_/Y�\b\r\\\u0017�\fC����� < %�\u001d���D�?CQ嫨؉�� < \u000f5����.m�RsD�\u001a:V8���ȱ\u0018b�͇ҍ.�\u0011T\u0010Ls�S��ϓ�y�,&��]\u0011�\u0010\u0002�����\u001b\u0014\u0002�M�\u0015�\u001e�i\u001f�\u0011E��3ؚ4��9Q�ZZ�Vf�%;b����L�z-\u0005���9\u0001 < ������_�m&�o�:��B�ŮY \u0006Ao\u001c��\u0019\n�\u0013��Z\u001b��,�5&a@�\u0007\u001e����re�����µ~��S\\�\u0016'�\u0007pL�|t\bɕ���ӧ\u000b�&g�+�#���\b[U&ʹ\b�\r\u0011��{��3��B\\[\"�\u0016�o�\\��\f�,7\u0006ⓟ�Օ e�\u0007wt�\r�/��r�%����8�\\P`�\u000e\u00139��\u0014��\u001ew���\u00140C\b��I���B���9>߰��HX\\�e�\u0018q�Q���\tA�kB����!Exy\u001d�\u001b��\u0010�\u001e^\u001apP.\u00195f�\u001d\u0018�`&�`Ў�X\u001a�w��d* < �\u0001��tPq���y�\u0013�{�?&��=�  U[\u000f\u0014\u0014r�A\r)�\u001f��13ڞP*���RI\f?e�tx�Z*\u0015�5՟\u0010D�q\u000f~(����7\b\u0013J[�h1>a�ܼ\"3\\\f�[\u001eF��L&-\u001c�c�(�b�rx�\u0006�\u0007���\r6,�T�U�/qW\u0019We��:\"s\u0005킔���ʧ�������'����>gd��2�8\u0006\u001c�S˒ղ�](�W�\u0013R�\u0000:\u0017-/Yˡo�r\u0014~�Y.�҉�j~�\u0012\u0001��\u001f���hu,4h�!$��\u001al/QՑ�쬈� < ��É2�}:��\u0019\\\u0011\r��9\u001d�����\u0005h�H$�GԸ�\u00019��Ne^aw���R8A�\u0003(Q/�\u000e9c�'P���GD��2�o�\u0006��:����Y�\u0019��мl��h\u0003�\u000e�uI�A��L�\u0012�*8��ٶ���\\Q\u001b!uƂ5\u0017���h)����\u001cC�j�:Q���h8\u0004���!������\u0004B\u0007�#G\u0000��f1�����\b������;�_��\u001f�\u0004aל�⍍&�\u0003M�]s���༏�0�H�LW�ͣ/t��{����\\��^�n\u000f2��uf�'XĂR.�\u0014\n�&\b��\"�����\nK��k��z}��\u000f�j��\u000b\u001e��\u0005k=0��3\u0013TT$��v�}���N?�\u0001��I\u0010�Y~�f_\u001dB^6�m�\u0011��g�QW�\r[?6����Wk���6�\u001e\u0005�������o,�Yr�\u001a\u000b`Q*s�k?t���\u001f��V)��.��;i葜-�\u0010\u0000\u001e�_��!\u0001�\"ʉ�7P�RF\u0016Q�%���^����\u0018q�nH\u0004���;^Wy\b\u0011��F��t[$��B\u001c1\u0006�\u0017|͝a\u0005�\u001c�\u0005����\u0004��\r���\u0015%\f®Go�\u0018��w;,����; < ���+�p�,��e�b�u�ޓ*�62�if�G < �\u0012Q��> .��?��8��{g���4Z,\u0001u3�V��|�Wx\u000f)ݯ2�B*�@���{i,|\u0004�x��}����L3�`.��>��\u0019\u0002��Q.\u0001\u0006����;CQ>oV�X=�\u0003%\u0006�%����\u0006\u001f~�*\rK)\r_�\u0017n\u0017M�\u000ea�����\u0013�=_n���h�$�w5��1�*��������%��I�m�0��������Ҭ4��͢�f!3i��1��\u0015\u0000.�V1���������L\u0015�\u0004^/\"Q;��P\u001e:��\u000f�\u0002\\f��z�#`1�m>�S��{[��;(E��\u001ev\u0010�\\��oοb/�ȁ��ϡ�l�w�_�pR\u0013oﯙ�v.�UZ\u0016�_���sG\u000fL���~�3�N5$c\u0001ѿ�\r�E���ߺV��\u001d�H �J_F�w;�2��-\u0005Dp\u0016��?\t�.R\u0003\u0007�X��\u0017�d�a��d!V���\u001f'�\\����-\u0013��\nD�JD*\u00050/���=\t��(/��8\u001cM&�$9���Xh�\u0011�\u0006��g���=щ�\u0000��/\u0010�ʲ�\u0000�\ty\u0005A\u000bؗ�\u0018������T�V����\u0017�\u0005`[Uy�\t�s�AH��\u000boι����FrzA�\u001cv�Q��\u0005\u0011�\u0015գ?&�l�\u0002���\t���\u0011s���\u0013%����N|�7gt��䷝c�e���N'DU�\u0019\u001c,䀿{&\u001fɁ��\u0018�����I�_,ҧ���#\f\u0002]��G��\u0004A�d�6x�_��e��\u001fk�����\t�>\u0012��\u001e�\u0014��.����v\u0010\u0012�ͯrx�\u0013������.� �qW�R��5����j�h��U;�;]�[~�\u0006����\u001d��@iJ}\u0012������\u0001\u0017�\u000e\u0018endstream\nendobj\n170 0 obj < < /Filter /FlateDecode /Length 1957 >>\nstream\nxڕXK��6\u0012����QƎ\u0018�ԋ\u0003�E&�,�\u0000�\u0018�C2\u0007٢��Ȓ�Gz;�>U��L���]\f�E\u0016�b����s�F�zJ�\u0012�����)D��H�R䕊���ߟD�V��H��D妹.�^W���\"�_��=��3O\u0002���?}�C�EF�B\u0015��\u0014)��T�H�F\u0014�D�&�5�����v�� < ���]�e\u001a��L��t\u001e�u?���bG\"&��\f��hX��s;��\f�����߯�\u0010I�YyS�%�\u000frd���h\u00019��,�;��@ < ]7�T\u001e?OH(���N�4�d\u001e���Xw\u001d\u0011C���2��gZ����e\u0007zچ\t�;%� < �~n����=/^�����v��h�t�\u000bj�J�t�\"�\u000bQ��9\u000e}\u000f��+� < ��\u0017;N4\u0006�hp\u0018�3�f�}QĶ?�]y�d�Ac��M�B�i < ��\u001c=mh{:�|�>{���3��uG\u0016c��\u0013\u001d_�\u0001h�\u001d�\u0018*�rQ)C\n�v���-�A��*p�\u0005\u0000D^\u0019D^\u001a��DV�\u0014sZ�]\"�4�?��b\u00189Ia�\r�\u001f�[�#{�J\n\r\u0011��aN���0��cy%�Ln����2�\u0019_K\u001dc|!�8\\�Ä~�\u0019Z\n�5m�P�+�j\u0015*�\u0014�4�{�\u0003\u001bY�69\u001cqv�v�di\u0019\u0017o��L����n\u001b\f�cݑp\u0014~b��\u0010�\u001f���wd�q�Y��\u0019Sc�\u0006OMh�2\u0015Y��\u0015�rHV�:�|\n���4Uㄱ�U1�i�\u0016��e��69ۺ���܃=�x��v��#~��\u0015��;\u0005�� < �`j/���I�\\�|\u0013��,�\"���\u001b�\u0017\u0005��Y�\u0007KNr��a&㊵M\u0002)��T�L�-�m��Q��ٕ&��cA�agb�X�\u0019Ƞ�Y�ns\r\u001b��ݤ_� pM�\u0015W�Wje\u001a���v�'�X��BF\u0003�\\\f ���Une�(r����\u0013�h 4���~��V:��.Y  \u000e/�Շ\u0019�z(�u��Y����UT��\u0010b\u001b\u0001佈ZkP����\u0004�ό�8�gb�z�X�*\u001e�����e��-pu��\u001f�����E�\u0019W��Ꝫ���ǎ?���"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:25:06"
+    }
+  ]
+}

@@ -21,8 +21,7 @@ Nhiệm vụ bắt buộc:
 - Agent có ít nhất 5 tool trong `artifacts/tools.yaml`.
 - Chạy base eval.
 - Tối ưu ít nhất 3 vòng sau baseline: `v1`, `v2`, `v3`.
-- Ghi `artifacts/version_log.csv`.
-- Viết thêm ít nhất 1 tool mới (kèm `TOOL.md`, đăng ký trong `tools/__init__.py` và `tools.yaml`).
+- Ghi `artifacts/version_log.csv`.arclViết thêm ít nhất 1 tool mới (kèm `TOOL.md`, đăng ký trong `tools/__init__.py` và `tools.yaml`).
 - Tự viết đúng 10 eval case vào `data/eval_group.json`: 5 single-turn + 5 multi-turn.
 - Nộp run JSON, transcript JSON, report.
 - Có UI chạy được. Khuyến nghị Streamlit để làm nhanh, nhưng nhóm có thể dùng bất kỳ framework nào và tự chọn nền tảng deploy phù hợp.
@@ -86,16 +85,16 @@ Trong fixed eval, chỉ đổi field tên tool để đồng bộ rename; không
 
 ## Các file quan trọng
 
-| Path | Mục đích |
-|---|---|
-| `artifacts/system_prompt.md` | instruction cho agent |
-| `artifacts/tools.yaml` | tên, mô tả và schema của tool |
-| `artifacts/version_log.csv` | giả thuyết và metric theo version |
-| `artifacts/REPORT.md` | tài liệu demo và bằng chứng nộp bài |
-| `data/eval_base.json` | base eval cố định |
-| `data/eval_group.json` | 10 case do nhóm tự viết |
-| `tools/<tool_name>/` | `TOOL.md` + implementation |
-| `scripts/preflight_provider.py` | kiểm tra provider |
+| Path                              | Mục đích                                |
+| --------------------------------- | ------------------------------------------ |
+| `artifacts/system_prompt.md`    | instruction cho agent                      |
+| `artifacts/tools.yaml`          | tên, mô tả và schema của tool         |
+| `artifacts/version_log.csv`     | giả thuyết và metric theo version       |
+| `artifacts/REPORT.md`           | tài liệu demo và bằng chứng nộp bài |
+| `data/eval_base.json`           | base eval cố định                       |
+| `data/eval_group.json`          | 10 case do nhóm tự viết                 |
+| `tools/<tool_name>/`            | `TOOL.md` + implementation               |
+| `scripts/preflight_provider.py` | kiểm tra provider                         |
 
 ## Tool tracks
 

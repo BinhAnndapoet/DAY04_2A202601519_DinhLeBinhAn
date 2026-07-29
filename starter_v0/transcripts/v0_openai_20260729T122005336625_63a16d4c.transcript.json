@@ -1,0 +1,88 @@
+{
+  "transcript_id": "v0_openai_20260729T122005336625_63a16d4c",
+  "version": "v0",
+  "artifact_version": "v0+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openai",
+  "model": "gpt-4o",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T12:20:05",
+  "updated_at": "2026-07-29T12:20:14",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T12:20:05",
+      "user": "Đọc URL này và tóm tắt các luận điểm chính giúp tôi.",
+      "status": "answered",
+      "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T12:20:06"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T12:20:10",
+      "user": "https://arxiv.org/pdf/1706.03762",
+      "status": "answered",
+      "assistant_text": "Hiện tại, tôi không thể truy cập trực tiếp vào URL bạn cung cấp. Tuy nhiên, bạn có thể tải xuống tài liệu từ URL đó và chia sẻ nội dung chính hoặc các phần bạn quan tâm, tôi sẽ giúp bạn tóm tắt và phân tích.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "fetch",
+              "args": {
+                "url": "https://arxiv.org/pdf/1706.03762"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "fetch",
+              "args": {
+                "url": "https://arxiv.org/pdf/1706.03762"
+              },
+              "result": {
+                "tool": "read_url",
+                "error": "RuntimeError",
+                "message": "Missing FIRECRAWL_API_KEY env var"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Hiện tại, tôi không thể truy cập trực tiếp vào URL bạn cung cấp. Tuy nhiên, bạn có thể tải xuống tài liệu từ URL đó và chia sẻ nội dung chính hoặc các phần bạn quan tâm, tôi sẽ giúp bạn tóm tắt và phân tích.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://arxiv.org/pdf/1706.03762"
+          },
+          "result": {
+            "tool": "read_url",
+            "error": "RuntimeError",
+            "message": "Missing FIRECRAWL_API_KEY env var"
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:20:14"
+    }
+  ]
+}

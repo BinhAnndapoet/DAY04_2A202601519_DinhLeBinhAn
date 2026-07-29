@@ -6,7 +6,7 @@ from typing import Any
 
 import streamlit as st
 
-from chat import now_iso, run_model_tool_loop, trim_history, write_transcript
+from chat import append_agent_trace, now_iso, run_model_tool_loop, trim_history, write_transcript
 from providers import make_provider
 from tools import load_tool_declarations, to_openai_tools
 from ui.workbench import (
@@ -30,6 +30,7 @@ ARTIFACTS_DIR = ROOT / "artifacts"
 SYSTEM_PROMPT_PATH = ARTIFACTS_DIR / "system_prompt.md"
 TOOLS_PATH = ARTIFACTS_DIR / "tools.yaml"
 TRANSCRIPTS_DIR = ROOT / "transcripts"
+AGENT_TRACE_PATH = ARTIFACTS_DIR / "agent_trace.csv"
 CSS_PATH = ROOT / "ui" / "styles.css"
 
 PROVIDERS = {
@@ -546,6 +547,20 @@ if pending_text and st.session_state.is_running:
                 {"role": "assistant", "content": assistant_text},
             ])
             st.session_state.last_result = result
+            # Persist a Thinking / Tool-call / Tool-result trace for this turn so
+            # the demo leaves a replayable record in artifacts/agent_trace.csv.
+            # Best-effort: never let a log write failure mask the real result.
+            try:
+                append_agent_trace(
+                    AGENT_TRACE_PATH,
+                    version=version_label,
+                    provider=st.session_state.provider_name,
+                    model=selected_model,
+                    turn_index=turn_index,
+                    rounds=result.get("rounds") or [],
+                )
+            except OSError as exc:
+                st.session_state.last_error = sanitize_error(exc)
         except Exception as exc:
             safe_error = sanitize_error(exc)
             turn_record.update({

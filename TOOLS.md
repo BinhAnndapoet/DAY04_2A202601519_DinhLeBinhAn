@@ -56,7 +56,7 @@ từng tool. Đây chính là interface mà model nhìn thấy khi quyết đị
 | `timeline`      | core  | live_api                    | RapidAPI Twitter API45 | `RAPIDAPI_KEY`, `RAPIDAPI_TWITTER_HOST`  | Lấy bài đăng gần đây của một tài khoản                                |
 | `social_search` | core  | live_api                    | RapidAPI Twitter API45 | `RAPIDAPI_KEY`, `RAPIDAPI_TWITTER_HOST`  | Tìm bài đăng theo từ khóa                                                  |
 | `lookup`        | core  | live_api                    | Tavily                 | `TAVILY_API_KEY`                           | Tra cứu trên web (general/news) theo khoảng thời gian                        |
-| `fetch`         | core  | live_api                    | Firecrawl              | `FIRECRAWL_API_KEY`                        | Đọc nội dung một URL                                                         |
+| `fetch`         | core  | http_scrape                 | Direct (requests)      | —                                          | Đọc nội dung một URL                                                         |
 | `format`        | core  | local_formatter             | —                     | —                                           | Trình bày item đã có thành markdown digest                                 |
 | `send`          | bonus | action                      | Telegram Bot API       | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Gửi text lên Telegram (chỉ khi`confirmed=true`)                             |
 | `policy`        | bonus | local_knowledge             | markdown_folder        | —                                           | Tìm trong`company_policy/*.md`                                                |
@@ -108,7 +108,7 @@ Phân nhóm theo ý định (intent) — cũng là cách system prompt hướng 
 
 #### `fetch` — đọc nội dung một URL
 
-- **Kind:** `live_api` · **Provider:** Firecrawl · **Env:** `FIRECRAWL_API_KEY`
+- **Kind:** `http_scrape` · **Provider:** Direct (requests) · **Env:** không cần key
 - **Inputs:** `url`
 - **Khi nào dùng:** khi đã có một URL cụ thể và cần text bên trong, khác với
   `lookup` (chưa biết URL, cần search).

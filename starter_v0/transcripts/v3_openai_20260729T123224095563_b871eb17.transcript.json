@@ -1,0 +1,102 @@
+{
+  "transcript_id": "v3_openai_20260729T123224095563_b871eb17",
+  "version": "v3",
+  "artifact_version": "v3+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openai",
+  "model": "gpt-4o",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T12:32:24",
+  "updated_at": "2026-07-29T12:32:33",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T12:32:24",
+      "user": "Đọc URL này và tóm tắt các luận điểm chính giúp tôi.",
+      "status": "answered",
+      "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Bạn có thể cung cấp URL mà bạn muốn tôi đọc và tóm tắt không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T12:32:25"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T12:32:27",
+      "user": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f",
+      "status": "answered",
+      "assistant_text": "The article \"Attention Is All You Need\" by Adnan Masood, PhD, explains the significance of the 2017 NeurIPS paper by Vaswani et al. from Google Brain/Google Research. This paper introduced the Transformer architecture, which is based entirely on attention mechanisms, eliminating the need for recurrence and convolutions. Key points include:\n\n- The Transformer architecture allows for easier learning of long-range dependencies and enables more parallelizable training.\n- It achieved state-of-the-art translation quality with significantly lower training costs.\n- The Transformer has become the foundational design for modern large language models and much of today's NLP stack.\n- The model processes a whole sentence at once, allowing each word to determine which other words are important, a process known as attention.\n\nThis architecture has reshaped modern language models by unlocking parallelism and improving efficiency in training. You can read the full article on [Medium](https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f).",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "fetch",
+              "args": {
+                "url": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "fetch",
+              "args": {
+                "url": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f"
+              },
+              "result": {
+                "tool": "read_url",
+                "url": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f",
+                "items": [
+                  {
+                    "title": "Medium",
+                    "url": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f",
+                    "source": "medium.com",
+                    "summary": "Medium Attention Is All You Need, explained like you’re smart and busy | by Adnan Masood, PhD. | Medium Sitemap Open in app Sign up Sign in Get app Write Search Sign up Sign in Member-only story Transformer Architecture Self Attention Model Attention Mechanism Nlp Transformers Deep Learning Nlp Attention Is All You Need, explained like you’re smart and busy How a simple idea — self-attention — replaced recurrence, unlocked parallelism, and reshaped modern language models Adnan Masood, PhD. 18 min read · Jan 13, 2026 -- Listen Share “ Attention Is All You Need ” (Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, and Polosukhin) is the 2017 NeurIPS paper from Google Brain/Google Research that introduced the Transformer , a sequence-to-sequence architecture built entirely on attention , eliminating recurrence and convolutions. Its significance is hard to overstate: by making long-range dependencies easier to learn and training far more parallelizable , it delivered state-of-the-art translation quality with dramatically lower training cost, and it became the foundational design behind modern large language models and much of today’s NLP stack. Press enter or click to view image in full size If you take nothing else away, take this: A Transformer is a model that reads a whole sentence at once and lets each word decide which other words matter to it. That “deciding who matters” is attention . And the “at once” part is why it trains fast. Press enter or click to view image in full size Written by Adnan Masood, PhD. 1.8K followers · 8 following Dr. Adnan Masood is an Engineer, Thought Leader, Author, AI/ML PhD, Stanford Scholar, Harvard Alum, Microsoft Regional Director, and STEM Robotics Coach. Help Status About Careers Press Blog Store Privacy Rules Terms Text to speech"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "The article \"Attention Is All You Need\" by Adnan Masood, PhD, explains the significance of the 2017 NeurIPS paper by Vaswani et al. from Google Brain/Google Research. This paper introduced the Transformer architecture, which is based entirely on attention mechanisms, eliminating the need for recurrence and convolutions. Key points include:\n\n- The Transformer architecture allows for easier learning of long-range dependencies and enables more parallelizable training.\n- It achieved state-of-the-art translation quality with significantly lower training costs.\n- The Transformer has become the foundational design for modern large language models and much of today's NLP stack.\n- The model processes a whole sentence at once, allowing each word to determine which other words are important, a process known as attention.\n\nThis architecture has reshaped modern language models by unlocking parallelism and improving efficiency in training. You can read the full article on [Medium](https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f).",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f",
+            "items": [
+              {
+                "title": "Medium",
+                "url": "https://medium.com/@adnanmasood/attention-is-all-you-need-explained-like-youre-smart-and-busy-2a3d7436144f",
+                "source": "medium.com",
+                "summary": "Medium Attention Is All You Need, explained like you’re smart and busy | by Adnan Masood, PhD. | Medium Sitemap Open in app Sign up Sign in Get app Write Search Sign up Sign in Member-only story Transformer Architecture Self Attention Model Attention Mechanism Nlp Transformers Deep Learning Nlp Attention Is All You Need, explained like you’re smart and busy How a simple idea — self-attention — replaced recurrence, unlocked parallelism, and reshaped modern language models Adnan Masood, PhD. 18 min read · Jan 13, 2026 -- Listen Share “ Attention Is All You Need ” (Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, and Polosukhin) is the 2017 NeurIPS paper from Google Brain/Google Research that introduced the Transformer , a sequence-to-sequence architecture built entirely on attention , eliminating recurrence and convolutions. Its significance is hard to overstate: by making long-range dependencies easier to learn and training far more parallelizable , it delivered state-of-the-art translation quality with dramatically lower training cost, and it became the foundational design behind modern large language models and much of today’s NLP stack. Press enter or click to view image in full size If you take nothing else away, take this: A Transformer is a model that reads a whole sentence at once and lets each word decide which other words matter to it. That “deciding who matters” is attention . And the “at once” part is why it trains fast. Press enter or click to view image in full size Written by Adnan Masood, PhD. 1.8K followers · 8 following Dr. Adnan Masood is an Engineer, Thought Leader, Author, AI/ML PhD, Stanford Scholar, Harvard Alum, Microsoft Regional Director, and STEM Robotics Coach. Help Status About Careers Press Blog Store Privacy Rules Terms Text to speech"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T12:32:33"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "transcript_id": "v0_openai_20260729T115631737263_192ad6a7",
+  "version": "v0",
+  "artifact_version": "v0+pd2cbf94fa521+t80ed43b40b29",
+  "prompt_hash": "d2cbf94fa52101c3e36cb6871d97c390af56d7322646faf050c3aff6444491d9",
+  "tools_hash": "80ed43b40b292d61e2eadf02f8145887b36ea2c1b090cbea2b2cbca4387846df",
+  "provider": "openai",
+  "model": "gpt-4o",
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T11:56:31",
+  "updated_at": "2026-07-29T11:56:39",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T11:56:31",
+      "user": "tóm tắt paper Attention is all you need",
+      "status": "answered",
+      "assistant_text": "I couldn't find the paper \"Attention is all you need\" in the search results. However, I can provide a brief summary based on general knowledge:\n\n\"Attention is All You Need\" is a seminal paper by Vaswani et al., published in 2017. It introduces the Transformer model, which relies entirely on self-attention mechanisms, dispensing with recurrence entirely. This model has become foundational in the field of natural language processing (NLP) and has led to significant advancements in machine translation, text generation, and other NLP tasks. The key innovation is the use of self-attention to compute representations of input and output sequences, which allows for more parallelization and improved performance over traditional models like RNNs and LSTMs.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "Attention is all you need",
+                "max_results": 1
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "Attention is all you need",
+                "max_results": 1
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "Attention is all you need",
+                "api_query": "all:Attention AND all:is AND all:all AND all:you AND all:need",
+                "total_results": 0,
+                "items": [],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "I couldn't find the paper \"Attention is all you need\" in the search results. However, I can provide a brief summary based on general knowledge:\n\n\"Attention is All You Need\" is a seminal paper by Vaswani et al., published in 2017. It introduces the Transformer model, which relies entirely on self-attention mechanisms, dispensing with recurrence entirely. This model has become foundational in the field of natural language processing (NLP) and has led to significant advancements in machine translation, text generation, and other NLP tasks. The key innovation is the use of self-attention to compute representations of input and output sequences, which allows for more parallelization and improved performance over traditional models like RNNs and LSTMs.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "Attention is all you need",
+            "max_results": 1
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "Attention is all you need",
+            "api_query": "all:Attention AND all:is AND all:all AND all:you AND all:need",
+            "total_results": 0,
+            "items": [],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T11:56:39"
+    }
+  ]
+}
