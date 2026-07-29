@@ -6,7 +6,7 @@
   "tools_hash": "f73767682be8a9ee60fbe3e0857db5fa76eb3447890ce48c2ea537ba3c85576a",
   "phase": "B",
   "suite": "group",
-  "provider": "openrouter",
+  "provider": "openai",
   "model": "openai/gpt-4o-mini",
   "system_prompt": "C:\\Users\\Admin\\Downloads\\LAB_Vin\\Lab4_nhom\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\artifacts\\system_prompt.md",
   "tools": "C:\\Users\\Admin\\Downloads\\LAB_Vin\\Lab4_nhom\\DAY04_2A202601519_DinhLeBinhAn\\starter_v0\\artifacts\\tools.yaml",
